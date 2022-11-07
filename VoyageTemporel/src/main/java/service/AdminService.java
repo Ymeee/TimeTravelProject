@@ -54,7 +54,7 @@ public class AdminService {
 			throw new AdminException("probleme login");
 		}
 		if (admin.getPassword() == null || admin.getPassword().isBlank() || admin.getPassword().length() > 100) {
-			throw new AdminException("probleme login");
+			throw new AdminException("probleme password");
 		}
 		return adminRepo.save(admin);
 	}

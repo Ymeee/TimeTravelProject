@@ -2,8 +2,13 @@ package model;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
@@ -29,18 +34,16 @@ public class Voyage {
 	private List<Reservation> reservation;
 	
 	
-	@ManyToOne
+	@Embedded
 	private Adresse adresse; 
 	
 	@ManyToOne
 	private Machine machine; 
+	
 	@Column(nullable = false)
 	@Enumerated
 	private Epoque epoque;
 	
-	@JsonView(JsonViews.Common.class)
-	@Column(nullable = false)
-	private LocalDateTime dateDepart;
 	
 	@JsonView(JsonViews.Common.class)
 	@Column(nullable = false)
@@ -58,27 +61,25 @@ public class Voyage {
 	}
 
 	public Voyage(Integer id, List<Reservation> reservation, Adresse adresse, Machine machine, Epoque epoque,
-			LocalDateTime dateDepart, LocalDateTime dateArrivee, LocalDateTime dateRetour,
+			LocalDateTime dateArrivee, LocalDateTime dateRetour,
 			double prix) {
 		this.id = id;
 		this.reservation = reservation;
 		this.adresse = adresse;
 		this.machine = machine;
 		this.epoque = epoque;
-		this.dateDepart = dateDepart;
 		this.dateArrivee = dateArrivee;
 		this.dateRetour = dateRetour;
 		this.prix = prix;
 	}
 
 	public Voyage(List<Reservation> reservation, Adresse adresse, Machine machine, Epoque epoque,
-			LocalDateTime dateDepart, LocalDateTime dateArrivee, LocalDateTime dateRetour,
+			LocalDateTime dateArrivee, LocalDateTime dateRetour,
 			double prix) {
 		this.reservation = reservation;
 		this.adresse = adresse;
 		this.machine = machine;
 		this.epoque = epoque;
-		this.dateDepart = dateDepart;
 		this.dateArrivee = dateArrivee;
 		this.dateRetour = dateRetour;
 		this.prix = prix;
@@ -124,15 +125,6 @@ public class Voyage {
 		this.epoque = epoque;
 	}
 
-
-	public LocalDateTime getDateDepart() {
-		return dateDepart;
-	}
-
-	public void setDateDepart(LocalDateTime dateDepart) {
-		this.dateDepart = dateDepart;
-	}
-
 	public LocalDateTime getDateArrivee() {
 		return dateArrivee;
 	}
@@ -158,11 +150,22 @@ public class Voyage {
 	}
 
 	@Override
-	public String toString() {
-		return "Voyage [id=" + id + ", reservation=" + reservation + ", adresse=" + adresse + ", machine=" + machine
-				+ ", epoque=" + epoque + ", dateDepart="
-				+ dateDepart + ", dateArrivee=" + dateArrivee + ", dateRetour=" + dateRetour + ", prix=" + prix + "]";
+	public int hashCode() {
+		return Objects.hash(adresse);
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Voyage other = (Voyage) obj;
+		return Objects.equals(adresse, other.adresse);
+	}
+
 	
 	
 	

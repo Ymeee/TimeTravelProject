@@ -1,6 +1,7 @@
 package model;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
@@ -75,6 +76,23 @@ public class Machine {
 
 	public void setEtatMachine(EtatMachine etatMachine) {
 		this.etatMachine = etatMachine;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(etatMachine);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Machine other = (Machine) obj;
+		return etatMachine == other.etatMachine;
 	}
 	
 	

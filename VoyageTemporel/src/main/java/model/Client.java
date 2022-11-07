@@ -19,6 +19,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 @Entity
 @DiscriminatorValue("client")
 public class Client extends Compte {
+	
 	@JsonView(JsonViews.Common.class)
 	@Column(length = 10,nullable = false,unique=true)
 	private String tel;
@@ -32,7 +33,8 @@ public class Client extends Compte {
 	@OneToMany(mappedBy="client")
 	private List<Reservation> reservation;
 	
-	@ManyToOne
+	@JsonView(JsonViews.Common.class)
+	@Embedded
 	private Adresse adresse;
 	
 	public Client() {

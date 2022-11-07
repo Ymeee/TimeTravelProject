@@ -1,5 +1,6 @@
 package service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,7 @@ public class MachineService {
 	}
 
 	private Machine save(Machine machine) {
-		if (machine.getDateMachine() == null) {
+		if (machine.getDateMachine() == null || machine.getDateMachine().isAfter(LocalDate.now())) {
 			throw new MachineException("probleme date machine");
 		}
 		if (machine.getTypeMachine() == null) {

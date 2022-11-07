@@ -32,8 +32,10 @@ public class ReservationRestController {
 	
 	@JsonView(JsonViews.Common.class)
 	@PostMapping("")
-	public Reservation create(@RequestBody Reservation reservation) {
-		//controles
+	public Reservation create(@Valid @RequestBody Reservation reservation, BindingResult br) {
+		if (br.hasErrors()) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "données incorrectes");
+		}
 		return reservationSrv.save(reservation);
 	}
 	

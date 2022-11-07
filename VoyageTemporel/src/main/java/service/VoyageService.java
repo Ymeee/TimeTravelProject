@@ -1,6 +1,5 @@
 package service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import exception.VoyageException;
 import exception.IdException;
+import model.Adresse;
+import model.EtatMachine;
 import model.Voyage;
 import repository.VoyageRepository;
 
@@ -20,6 +21,10 @@ public class VoyageService {
 	
 	public List<Voyage> findAll() {
 		return voyageRepo.findAll();
+	}
+	
+	public List<Voyage> findByAdresse(Adresse adresse) {
+		return voyageRepo.findByAdresse(adresse);
 	}
 
 	public Voyage findById(Integer id) {
@@ -42,20 +47,14 @@ public class VoyageService {
 	}
 
 	private Voyage save(Voyage voyage) {
-		/*if (voyage.getReservation() == null) {
-			throw new VoyageException("probleme reservation");
-		}
 		if (voyage.getAdresse() == null) {
 			throw new VoyageException("probleme adresse");
 		}
-		if (voyage.getMachine() == null) {
-			throw new VoyageException("probleme machine");
-		}
 		if (voyage.getEpoque() == null) {
 			throw new VoyageException("probleme epoque");
-		}*/
-		if (voyage.getDateDepart() == null || voyage.getDateDepart().isBefore(LocalDateTime.now())) {
-			throw new VoyageException("probleme date depart (present)");
+		}
+		if (voyage.getMachine() == null || voyage.getMachine().getEtatMachine().equals(EtatMachine.Reservee) || voyage.getMachine().getEtatMachine().equals(EtatMachine.Inutilisable)) {
+			throw new VoyageException("probleme machine");
 		}
 		if (voyage.getDateArrivee() == null || voyage.getDateArrivee().isAfter(voyage.getDateRetour())) {
 			throw new VoyageException("probleme date arrivee (passe)");

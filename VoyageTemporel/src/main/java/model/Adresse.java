@@ -1,8 +1,10 @@
 package model;
 
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
@@ -12,15 +14,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-@Entity
-@DiscriminatorValue("adresse")
-
 @Embeddable
 public class Adresse {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+
 	@Column(length = 20,nullable = false)
 	private String numero;
 	@Column(length = 35,nullable = false)
@@ -31,18 +28,11 @@ public class Adresse {
 	private String ville;
 	@Column(length = 20,nullable = false)
 	private String pays;
-	
-	@OneToMany(mappedBy = "adresse")
-	private List<Client> client;
-	
-	@OneToMany(mappedBy="adresse")
-	private List<Voyage> voyages;
 
 	public Adresse() {
 	}
 	
-	public Adresse(Integer id, String numero, String rue, String cp, String ville, String pays) {
-		this.id = id;
+	public Adresse(String numero, String rue, String cp, String ville, String pays) {
 		this.numero = numero;
 		this.rue = rue;
 		this.cp = cp;
@@ -50,19 +40,8 @@ public class Adresse {
 		this.pays = pays;
 	}
 
-	@Override
-	public String toString() {
-		return "Adresse [id=" + id + ", numero=" + numero + ", rue=" + rue + ", cp=" + cp + ", ville=" + ville
-				+ ", pays=" + pays + ", client=" + client + "]";
-	}
 
-	public Integer getId() {
-		return id;
-	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
 
 	public String getNumero() {
 		return numero;
@@ -104,13 +83,25 @@ public class Adresse {
 		this.pays = pays;
 	}
 
-	public List<Client> getClient() {
-		return client;
+	@Override
+	public int hashCode() {
+		return Objects.hash(cp, numero, pays, rue, ville);
 	}
 
-	public void setClient(List<Client> client) {
-		this.client = client;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Adresse other = (Adresse) obj;
+		return Objects.equals(cp, other.cp) && Objects.equals(numero, other.numero) && Objects.equals(pays, other.pays)
+				&& Objects.equals(rue, other.rue) && Objects.equals(ville, other.ville);
 	}
+
+
 	
 	
 

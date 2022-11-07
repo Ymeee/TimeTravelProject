@@ -47,7 +47,9 @@ public class PassagerService {
 		if (passager.getPrenom() == null || passager.getPrenom().isBlank() || passager.getPrenom().length() > 30) {
 			throw new PassagerException("probleme prenom");
 		}
-
+		if (passager.getAge() > 150 || passager.getAge() < 0) {
+			throw new PassagerException("probleme age");
+		}
 		return passagerRepo.save(passager);
 	}
 

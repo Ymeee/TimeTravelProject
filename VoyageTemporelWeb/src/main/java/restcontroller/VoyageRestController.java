@@ -1,6 +1,7 @@
 package restcontroller;
 
 import java.util.List;
+import java.util.StringTokenizer;
 
 import javax.validation.Valid;
 
@@ -20,6 +21,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import model.Adresse;
 import model.JsonViews;
 import model.Voyage;
 import service.VoyageService;
@@ -41,10 +43,24 @@ public class VoyageRestController {
 	public List<Voyage> findAll() {
 		return voyageSrv.findAll();
 	}
+	
+	@GetMapping("/adresse/{adresse}")
+	@JsonView(JsonViews.Common.class)
+	public List<Voyage> findByAdresse(@PathVariable String adresse) {
+		StringTokenizer tokenizer = new StringTokenizer(adresse, "-");
+		Adresse ad = new Adresse();
+		ad.setNumero(tokenizer.nextToken());
+		ad.setRue(tokenizer.nextToken());
+		ad.setCp(tokenizer.nextToken());
+		ad.setVille(tokenizer.nextToken());
+		ad.setPays(tokenizer.nextToken());
+		
+		return voyageSrv.findByAdresse(ad);
+	}
 
 	@ResponseStatus(code = HttpStatus.CREATED)
 	@PostMapping("")
-	@JsonView(JsonViews.VoyageWithReservation.class)
+	@JsonView(JsonViews.Common.class)
 	public Voyage create(@Valid @RequestBody Voyage voyage, BindingResult br) {
 		if (br.hasErrors()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "données incorrectes");

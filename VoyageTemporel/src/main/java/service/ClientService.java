@@ -1,5 +1,9 @@
 package service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Period;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,7 +55,7 @@ public class ClientService {
 			throw new AdminException("probleme login");
 		}
 		if (client.getPassword() == null || client.getPassword().isBlank() || client.getPassword().length() > 100) {
-			throw new AdminException("probleme login");
+			throw new AdminException("probleme password");
 		}
 		if (client.getTel() == null || client.getTel().isBlank() || client.getTel().length() > 10) {
 			throw new AdminException("probleme tel");
@@ -59,7 +63,7 @@ public class ClientService {
 		if (client.getMail() == null || client.getMail().isBlank() || client.getMail().length() > 35) {
 			throw new AdminException("probleme mail");
 		}
-		if (client.getAnniversaire() == null) {
+		if (client.getAnniversaire() == null || client.getAnniversaire().isAfter(LocalDate.now()) || ChronoUnit.YEARS.between(client.getAnniversaire(), LocalDate.now())>150) {
 			throw new AdminException("probleme anniv");
 		}
 		return clientRepo.save(client);

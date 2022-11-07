@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -34,6 +35,11 @@ public class Reservation {
 	private Client client; 
 	
 	@JsonView(JsonViews.Common.class)
+	@Column(nullable = false)
+	private LocalDateTime dateDepart;
+	
+	
+	@JsonView(JsonViews.Common.class)
 	@ManyToMany
 	@JoinTable(name="reservation_passager")
 	private List<Passager> passager;
@@ -54,22 +60,24 @@ public class Reservation {
 	}
 
 
-	public Reservation(Integer id, Client client, List<Passager> passager, Voyage voyage, double prixReel, EtatVoyage etatVoyage) {
+	public Reservation(Integer id, Client client, List<Passager> passager, Voyage voyage, double prixReel, EtatVoyage etatVoyage, LocalDateTime dateDepart) {
 		this.id = id;
 		this.client = client;
 		this.passager = passager;
 		this.voyage = voyage;
 		this.prixReel = prixReel;
 		this.etatVoyage = etatVoyage;
+		this.dateDepart = dateDepart;
 	}
 
 
-	public Reservation(Client client, List<Passager> passager, Voyage voyage, double prixReel, EtatVoyage etatVoyage) {
+	public Reservation(Client client, List<Passager> passager, Voyage voyage, double prixReel, EtatVoyage etatVoyage, LocalDateTime dateDepart) {
 		this.client = client;
 		this.passager = passager;
 		this.voyage = voyage;
 		this.prixReel = prixReel;
 		this.etatVoyage = etatVoyage;
+		this.dateDepart = dateDepart;
 	}
 
 
@@ -137,15 +145,18 @@ public class Reservation {
 	public void setEtatVoyage(EtatVoyage etatVoyage) {
 		this.etatVoyage = etatVoyage;
 	}
-	
-	
 
 
-	@Override
-	public String toString() {
-		return "Reservation [id=" + id + ", prixReel=" + prixReel + ", client=" + client + ", passager=" + passager
-				+ ", voyage=" + voyage + "]";
+	public LocalDateTime getDateDepart() {
+		return dateDepart;
 	}
+
+
+	public void setDateDepart(LocalDateTime dateDepart) {
+		this.dateDepart = dateDepart;
+	}
+	
+	
 
 	
 	

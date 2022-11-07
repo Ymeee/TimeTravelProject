@@ -15,7 +15,6 @@ import com.fasterxml.jackson.annotation.JsonView;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="type_compte",columnDefinition = "ENUM('Admin','Client')")
-@Table(name="compte")
 public abstract class Compte {
 	@JsonView(JsonViews.Common.class)
 	@Id

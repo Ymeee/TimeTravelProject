@@ -1,5 +1,6 @@
 package service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,8 +50,14 @@ public class ReservationService {
 		if (reservation.getClient() == null) {
 			throw new ReservationException("probleme client");
 		}
+		if (reservation.getPassager() == null || reservation.getPassager().size()==0) {
+			throw new ReservationException("probleme passager");
+		}
 		if (reservation.getEtatVoyage() == null) {
 			throw new ReservationException("probleme voyage");
+		}
+		if (reservation.getDateDepart() == null || reservation.getDateDepart().isBefore(LocalDateTime.now())) {
+			throw new ReservationException("probleme date depart (present)");
 		}
 		return reservationRepo.save(reservation);
 	}
