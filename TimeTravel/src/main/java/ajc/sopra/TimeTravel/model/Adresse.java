@@ -18,15 +18,15 @@ import javax.persistence.OneToOne;
 public class Adresse {
 	
 
-	@Column(length = 20,nullable = false)
+	@Column(length = 20)
 	private String numero;
-	@Column(length = 35,nullable = false)
+	@Column(length = 35)
 	private String rue;
-	@Column(length = 15,nullable = false)
+	@Column(length = 15)
 	private String cp;
-	@Column(length = 35,nullable = false)
+	@Column(length = 35)
 	private String ville;
-	@Column(length = 20,nullable = false)
+	@Column(length = 20)
 	private String pays;
 
 	public Adresse() {

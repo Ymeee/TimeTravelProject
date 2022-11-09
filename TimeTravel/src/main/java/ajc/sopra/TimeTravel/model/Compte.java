@@ -13,6 +13,8 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -95,6 +97,7 @@ public abstract class Compte implements UserDetails {
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
+
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -47,7 +47,7 @@ public class AdminService {
 		return save(admin);
 	}
 
-	private Admin save(Admin admin) {
+	public Admin save(Admin admin) {
 		if (admin.getNom() == null || admin.getNom().isBlank() || admin.getNom().length() > 35) {
 			throw new AdminException("probleme nom");
 		}
@@ -61,7 +61,6 @@ public class AdminService {
 			throw new AdminException("probleme password");
 		}
 		admin.setPassword(passwordEncoder.encode(admin.getPassword()));
-		adminRepo.save(admin);
 		return adminRepo.save(admin);
 	}
 

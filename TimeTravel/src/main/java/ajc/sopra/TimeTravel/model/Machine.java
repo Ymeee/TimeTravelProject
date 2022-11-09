@@ -32,8 +32,6 @@ public class Machine {
 	@Column(nullable = false)
 	@Enumerated
 	private EtatMachine etatMachine;
-
-	
 	
 	public Machine(Integer id, LocalDate dateMachine, TypeMachine typeMachine, EtatMachine etatMachine) {
 		this.id = id;
@@ -49,6 +47,8 @@ public class Machine {
 	}
 	
 	public Machine() {}
+	
+	
 	public Integer getId() {
 		return id;
 	}

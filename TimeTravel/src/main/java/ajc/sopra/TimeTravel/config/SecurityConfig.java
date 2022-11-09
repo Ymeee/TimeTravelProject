@@ -20,9 +20,9 @@ public class SecurityConfig {
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 			.and()
 			.authorizeRequests()
-				.antMatchers(HttpMethod.POST ,"/api/client/inscription").anonymous()
+				.antMatchers(HttpMethod.POST ,"/api/client/inscription","/api/admin/inscription","/api/voyage/**").anonymous()
 				.antMatchers(HttpMethod.PATCH,"/api/client/**").authenticated()
-				.antMatchers(HttpMethod.POST, "/api/voyage/**", "/api/reservation/**").hasRole("Client")
+				.antMatchers(HttpMethod.POST, "/api/reservation/**").hasRole("Client")
 				.anyRequest().hasRole("Admin")
 			.and()
 			.httpBasic()
@@ -30,7 +30,7 @@ public class SecurityConfig {
 			.build();
 		// @formatter:on
 	}
-	
+
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();

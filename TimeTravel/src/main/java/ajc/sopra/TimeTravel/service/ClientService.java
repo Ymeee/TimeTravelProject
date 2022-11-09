@@ -71,7 +71,6 @@ public class ClientService {
 			throw new AdminException("probleme anniv");
 		}
 		client.setPassword(passwordEncoder.encode(client.getPassword()));
-		clientRepo.save(client);
 		return clientRepo.save(client);
 	}
 

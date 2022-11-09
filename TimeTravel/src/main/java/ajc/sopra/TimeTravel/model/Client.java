@@ -21,13 +21,13 @@ import com.fasterxml.jackson.annotation.JsonView;
 public class Client extends Compte {
 	
 	@JsonView(JsonViews.Common.class)
-	@Column(length = 10,nullable = false,unique=true)
+	@Column(length = 10,unique=true)
 	private String tel;
 	@JsonView(JsonViews.Common.class)
-	@Column(length = 35,nullable = false,unique=true)
+	@Column(length = 35,unique=true)
 	private String mail;
 	@JsonView(JsonViews.Common.class)
-	@Column(nullable = false)
+	//@Column(nullable = false)
 	private LocalDate anniversaire;
 	
 	@OneToMany(mappedBy="client")
@@ -40,9 +40,9 @@ public class Client extends Compte {
 	public Client() {
 	}
 
-	public Client(Integer id, String login, String mdp, String nom, String prenom, String tel, String mail,
+	public Client(Integer id, String login, String password, String nom, String prenom, String tel, String mail,
 			LocalDate anniversaire) {
-		super(id, login, mdp, nom, prenom);
+		super(id, login, password, nom, prenom);
 		this.tel = tel;
 		this.mail = mail;
 		this.anniversaire = anniversaire;

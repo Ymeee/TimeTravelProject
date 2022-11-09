@@ -1,11 +1,15 @@
 package ajc.sopra.TimeTravel.restcontroller;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,6 +33,12 @@ import ajc.sopra.TimeTravel.service.MachineService;
 public class MachineRestController {
 	@Autowired
 	private MachineService machineSrv;
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(Machine.class);
+	
+	public MachineRestController() {
+		LOGGER.info("rest ok");
+	}
 
 	@JsonView(JsonViews.Common.class)
 	@GetMapping("/{id}")
@@ -49,6 +59,7 @@ public class MachineRestController {
 		if (br.hasErrors()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "données incorrectes");
 		}
+		LOGGER.info(machine.getTypeMachine().toString());
 		return machineSrv.create(machine);
 	}
 
