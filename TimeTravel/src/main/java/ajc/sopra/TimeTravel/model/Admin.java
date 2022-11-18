@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 
 
 @Entity
-@DiscriminatorValue("admin")
+@DiscriminatorValue("Admin")
 public class Admin extends Compte {
 	
 	public Admin() {

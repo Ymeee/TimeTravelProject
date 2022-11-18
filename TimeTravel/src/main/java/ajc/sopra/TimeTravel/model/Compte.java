@@ -21,12 +21,16 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import ajc.sopra.TimeTravel.service.CustomUserDetailsService;
+
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="type_compte",columnDefinition = "ENUM('Admin','Client')")
 public abstract class Compte implements UserDetails {
 	
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(Compte.class);
+	
 	@JsonView(JsonViews.Common.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -101,7 +105,8 @@ public abstract class Compte implements UserDetails {
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return Arrays.asList(new SimpleGrantedAuthority(getClass().getSimpleName()));
+		LOGGER.info("class name : "+getClass().getSimpleName());
+		return Arrays.asList(new SimpleGrantedAuthority("ROLE_"+getClass().getSimpleName()));
 	}
 
 	@Override

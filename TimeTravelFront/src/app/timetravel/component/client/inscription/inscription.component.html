@@ -1,0 +1,133 @@
+<div>
+  <form (ngSubmit)="save()" [formGroup]="form">
+    <ng-container formGroupName="groupeInfo">
+      <div class="form-group">
+        <label for="prenom">Prenom</label>
+        <input formControlName="prenom" class="form-control" />
+        <div
+          *ngIf="
+            form.get('groupeInfo.prenom')?.dirty &&
+            form.get('groupeInfo.prenom')?.invalid
+          "
+          class="alert alert-danger"
+        >
+          Probleme prenom
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="nom">Nom</label>
+        <input formControlName="nom" class="form-control" />
+        <div
+          *ngIf="
+            form.get('groupeInfo.nom')?.dirty &&
+            form.get('groupeInfo.nom')?.invalid
+          "
+          class="alert alert-danger"
+        >
+          Probleme nom
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="login">Login</label>
+        <input formControlName="login" class="form-control" />
+        <div
+          *ngIf="
+            form.get('groupeInfo.login')?.dirty &&
+            form.get('groupeInfo.login')?.invalid
+          "
+          class="alert alert-danger"
+        >
+          Probleme login
+        </div>
+      </div>
+      <ng-container formGroupName="groupePassword">
+        <div class="form-group">
+          <label for="password">Mot de passe</label>
+          <input formControlName="password" class="form-control" />
+          <div
+            *ngIf="
+              form.get('groupeInfo.groupePassword.password')?.dirty &&
+              form.get('groupeInfo.groupePassword.password')?.invalid
+            "
+            class="alert alert-danger"
+          >
+            Probleme mot de passe
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="confirmation">Confirmation</label>
+          <input formControlName="confirmation" class="form-control" />
+          <div
+            *ngIf="
+              form.get('groupeInfo.groupePassword.confirmation')?.dirty &&
+              form.get('groupeInfo.groupePassword.confirmation')?.invalid
+            "
+            class="alert alert-danger"
+          >
+            Probleme confirmation
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+    <div class="form-group">
+      <label for="tel">Numero de telephone</label>
+      <input formControlName="tel" class="form-control" />
+      <div
+        *ngIf="
+          form.get('groupeInfo.tel')?.dirty &&
+          form.get('groupeInfo.tel')?.invalid
+        "
+        class="alert alert-danger"
+      >
+        Probleme numero de telephone
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="mail">Adresse e-mail</label>
+      <input formControlName="mail" class="form-control" />
+      <div
+        *ngIf="
+          form.get('groupeInfo.mail')?.dirty &&
+          form.get('groupeInfo.mail')?.invalid
+        "
+        class="alert alert-danger"
+      >
+        Probleme adresse e-mail
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="anniversaire">Date de naissance</label>
+      <input type="date" formControlName="anniversaire" class="form-control" />
+    </div>
+    <h3>Adresse :</h3>
+    <div class="form-group">
+      <label for="numero">Numero</label>
+      <input formControlName="numero" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label for="rue">Rue</label>
+      <input formControlName="rue" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label for="cp">Code postal</label>
+      <input formControlName="cp" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label for="ville">Ville</label>
+      <input formControlName="ville" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label for="pays">Pays</label>
+      <input formControlName="pays" class="form-control" />
+    </div>
+    <div>
+      <button
+        type="submit"
+        [disabled]="form.invalid"
+        class="btn btn-outline-primary"
+      >
+        S'inscrire
+      </button>
+    </div>
+  </form>
+</div>

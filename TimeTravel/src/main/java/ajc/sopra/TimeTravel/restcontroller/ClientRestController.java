@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,10 +30,24 @@ import ajc.sopra.TimeTravel.service.ClientService;
 
 @RestController
 @RequestMapping("/api/client")
+@CrossOrigin(origins = {"*"})
 public class ClientRestController {
 
 	@Autowired
 	private ClientService clientSrv;
+
+	
+	@GetMapping("/check/login/{login}")
+	public boolean checkLoginExists(@PathVariable String login) {
+		return clientSrv.checkLoginExists(login);
+	}
+
+	
+	@GetMapping("/check/mail/{mail}")
+	public boolean checkEmailExists(@PathVariable String mail) {
+		return clientSrv.checkMailExists(mail);
+	}
+
 	
 	@JsonView(JsonViews.Common.class)
 	@PostMapping("/inscription")

@@ -9,3 +9,21 @@ format voyage :
    "epoque":"Renaissance",
    "prix":2300.85	
 }
+
+format client : 
+{
+   "login":"emy",
+   "password":"password",
+   "nom":"boucard",
+   "prenom":"emy",
+   "tel":"0325252525",
+   "mail":"emy@gmail.com",
+   "anniversaire":[1998,12,25],
+   "adresse":{
+       "numero":"1",
+       "rue":"fde",
+       "cp":"45531",
+       "ville":"nkdf",
+       "pays":"vnkd"
+   }
+}

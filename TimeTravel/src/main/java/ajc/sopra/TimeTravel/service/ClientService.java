@@ -15,12 +15,16 @@ import ajc.sopra.TimeTravel.exception.AdminException;
 import ajc.sopra.TimeTravel.exception.IdException;
 import ajc.sopra.TimeTravel.model.Client;
 import ajc.sopra.TimeTravel.repository.ClientRepository;
+import ajc.sopra.TimeTravel.repository.CompteRepository;
 
 @Service
 public class ClientService {
 
 	@Autowired
 	private ClientRepository clientRepo;
+	
+	@Autowired
+	private CompteRepository compteRepo;
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -61,7 +65,7 @@ public class ClientService {
 		if (client.getPassword() == null || client.getPassword().isBlank() || client.getPassword().length() > 100) {
 			throw new AdminException("probleme password");
 		}
-		if (client.getTel() == null || client.getTel().isBlank() || client.getTel().length() > 10) {
+		if (client.getTel() == null || client.getTel().isBlank()) {
 			throw new AdminException("probleme tel");
 		}
 		if (client.getMail() == null || client.getMail().isBlank() || client.getMail().length() > 35) {
@@ -74,6 +78,16 @@ public class ClientService {
 		return clientRepo.save(client);
 	}
 
+	public boolean checkMailExists(String mail) {
+		return clientRepo.findByMail(mail).isPresent();
+	}
+	
+	public boolean checkLoginExists(String login) {
+		return compteRepo.findByLogin(login).isPresent();
+	}
+	
+	
+	
 	public void delete(Client client) {
 		clientRepo.delete(client);
 	}

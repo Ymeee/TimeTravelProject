@@ -13,18 +13,19 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.Email;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
-@DiscriminatorValue("client")
+@DiscriminatorValue("Client")
 public class Client extends Compte {
 	
 	@JsonView(JsonViews.Common.class)
-	@Column(length = 10,unique=true)
 	private String tel;
+	@Email
 	@JsonView(JsonViews.Common.class)
-	@Column(length = 35,unique=true)
+	@Column(unique=true)
 	private String mail;
 	@JsonView(JsonViews.Common.class)
 	//@Column(nullable = false)
