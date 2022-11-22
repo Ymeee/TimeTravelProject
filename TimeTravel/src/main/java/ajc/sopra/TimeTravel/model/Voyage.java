@@ -18,6 +18,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.fasterxml.jackson.annotation.JsonView;
 
 
@@ -33,13 +36,15 @@ public class Voyage {
 	@OneToMany(mappedBy = "voyage")
 	private List<Reservation> reservation;
 	
-	
+	@JsonView(JsonViews.Common.class)
 	@Embedded
 	private Adresse adresse; 
 	
+	@JsonView(JsonViews.Common.class)
 	@ManyToOne
 	private Machine machine; 
 	
+	@JsonView(JsonViews.Common.class)
 	@Column(nullable = false)
 	@Enumerated
 	private Epoque epoque;
@@ -56,6 +61,9 @@ public class Voyage {
 	@JsonView(JsonViews.Common.class)
 	@Column(nullable = false)
 	private double prix; 
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(Voyage.class);
+
 	
 	public Voyage() {
 	}

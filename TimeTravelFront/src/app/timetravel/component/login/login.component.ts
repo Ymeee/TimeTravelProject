@@ -19,11 +19,12 @@ export class LoginComponent implements OnInit {
 
   send() {
     this.authSrv.authentication(this.login, this.password).subscribe({
+
       next: (data) => {
         this.error = false;
         sessionStorage.setItem(
           'token',
-          'Basic' + btoa(this.login + ':' + this.password)
+          'Basic ' + btoa(this.login + ':' + this.password)
         );
         if (data.role == 'ROLE_Client') {
           let client = new Client(
@@ -34,11 +35,12 @@ export class LoginComponent implements OnInit {
             data.client.anniversaire,
             data.client.mail,
             data.client.adresse,
-            data.client.tel,
+            data.client.tel
           );
           sessionStorage.setItem('client', JSON.stringify(client));
           sessionStorage.setItem('role', 'client');
           sessionStorage.setItem('client', JSON.stringify(data.login));
+
         } else {
           sessionStorage.setItem('role', 'admin');
         }

@@ -53,7 +53,7 @@ public class VoyageService {
 		if (voyage.getEpoque() == null) {
 			throw new VoyageException("probleme epoque");
 		}
-		if (voyage.getMachine() == null || voyage.getMachine().getEtatMachine().equals(EtatMachine.Reservee) || voyage.getMachine().getEtatMachine().equals(EtatMachine.Inutilisable)) {
+		if (voyage.getMachine() == null) {
 			throw new VoyageException("probleme machine");
 		}
 		if (voyage.getDateArrivee() == null || voyage.getDateArrivee().isAfter(voyage.getDateRetour())) {

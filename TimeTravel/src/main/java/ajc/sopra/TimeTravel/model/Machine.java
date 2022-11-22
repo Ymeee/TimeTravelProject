@@ -11,6 +11,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
@@ -32,6 +35,9 @@ public class Machine {
 	@Column(nullable = false)
 	@Enumerated
 	private EtatMachine etatMachine;
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(Machine.class);
+
 	
 	public Machine(Integer id, LocalDate dateMachine, TypeMachine typeMachine, EtatMachine etatMachine) {
 		this.id = id;

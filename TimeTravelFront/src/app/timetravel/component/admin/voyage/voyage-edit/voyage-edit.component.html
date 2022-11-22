@@ -1,0 +1,146 @@
+<div>
+  <form (ngSubmit)="save()" #form="ngForm">
+    <div class="form-group">
+      <label for="id">id:</label>
+      <input
+        class="form-control"
+        id="id"
+        name="id"
+        [(ngModel)]="voyage.id"
+        readonly
+      />
+    </div>
+    <div class="form-group">
+      <label for="machine">machine:</label>
+      <select
+        class="form-control"
+        name="voyage.machine"
+        [(ngModel)]="voyage.machine"
+        [compareWith]="byId"
+        required
+        #machineCtrl="ngModel"
+      >
+        <option *ngFor="let machine of machines" [ngValue]="machine">
+          {{ machine.typeMachine }}
+        </option>
+      </select>
+      <div *ngIf="machineCtrl.invalid">*machine obligatoire</div>
+    </div>
+
+    <div class="form-group">
+      <label for="epoque">epoque:</label>
+      <select
+        class="form-control"
+        name="voyage.epoque"
+        [(ngModel)]="voyage.epoque"
+        [compareWith]="byId"
+        #epoqueCtrl="ngModel"
+        required
+      >
+        <option *ngFor="let epoque of epoques | keyvalue" [value]="epoque.key">
+          {{ epoque.key }}
+        </option>
+      </select>
+      <div *ngIf="epoqueCtrl.invalid">*epoque obligatoire</div>
+    </div>
+
+    <div class="form-group">
+      <label for="dateArrivee">date d'arrivee:</label>
+      <input
+        type="date"
+        class="form-control"
+        name="voyage.dateArrivee.date"
+        required
+      />
+      <input
+        type="time"
+        class="form-control"
+        name="voyage.dateArrivee.time"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="dateRetour">date de retour:</label>
+      <input
+        type="datetime-local"
+        class="form-control"
+        name="voyage.dateRetour"
+        [(ngModel)]="voyage.dateRetour"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="prix">prix du voyage:</label>
+      <input
+        type="number"
+        step="0.1"
+        class="form-control"
+        id="prix"
+        name="prix"
+        [(ngModel)]="voyage.prix"
+        min="100"
+        #prixCtrl="ngModel"
+      />
+      <div
+        *ngIf="prixCtrl.dirty && prixCtrl.invalid"
+        class="alert alert-danger"
+      >
+        le prix doit etre superieur à 100 €
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="adresse.numero">numero:</label>
+      <input
+        class="form-control"
+        id="adresse.numero"
+        name="adresse.numero"
+        [(ngModel)]="voyage.adresse!.numero"
+      />
+    </div>
+    <div class="form-group">
+      <label for="adresse.rue">rue:</label>
+      <input
+        class="form-control"
+        id="adresse.rue"
+        name="adresse.rue"
+        [(ngModel)]="voyage.adresse!.rue"
+      />
+    </div>
+    <div class="form-group">
+      <label for="adresse.cp">code postal:</label>
+      <input
+        class="form-control"
+        id="adresse.cp"
+        name="adresse.cp"
+        [(ngModel)]="voyage.adresse!.cp"
+      />
+    </div>
+    <div class="form-group">
+      <label for="adresse.ville">code ville:</label>
+      <input
+        class="form-control"
+        id="adresse.ville"
+        name="adresse.ville"
+        [(ngModel)]="voyage.adresse!.ville"
+      />
+    </div>
+    <div class="form-group">
+      <label for="adresse.pays">code pays:</label>
+      <input
+        class="form-control"
+        id="adresse.pays"
+        name="adresse.pays"
+        [(ngModel)]="voyage.adresse!.pays"
+      />
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-outline-primary">enregistrer</button>
+      <a
+        routerLink="/voyage"
+        routerLinkActive="active"
+        class="btn btn-outline-warning"
+        >annuler</a
+      >
+    </div>
+  </form>
+</div>

@@ -16,21 +16,13 @@ public class CustomUserDetailsService implements UserDetailsService {
 
 	@Autowired
 	private CompteRepository compteRepo;
-	
-	private static final Logger LOGGER = LoggerFactory.getLogger(CustomUserDetailsService.class);
 
-	
-	public CustomUserDetailsService() {
-		LOGGER.info("contruction service");
-	}
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Compte compte=compteRepo.findByLogin(username).orElseThrow(() -> {
-			LOGGER.info("exception");
 			throw new UsernameNotFoundException("utilisateur inconnu");
 		});
-		LOGGER.info(compte.toString());
 		return( compte );
 	}
 

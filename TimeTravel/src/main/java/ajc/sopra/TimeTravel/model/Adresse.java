@@ -14,18 +14,22 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Embeddable
 public class Adresse {
 	
-
+	
 	@Column(length = 20)
 	private String numero;
 	@Column(length = 35)
 	private String rue;
 	@Column(length = 15)
 	private String cp;
+	@JsonView(JsonViews.Common.class)
 	@Column(length = 35)
 	private String ville;
+	@JsonView(JsonViews.Common.class)
 	@Column(length = 20)
 	private String pays;
 

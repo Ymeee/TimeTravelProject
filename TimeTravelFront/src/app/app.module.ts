@@ -14,6 +14,8 @@ import { VoyageCoComponent } from './timetravel/component/voyage/voyage-co/voyag
 import { InscriptionComponent } from './timetravel/component/client/inscription/inscription.component';
 import { ProblemeAdminComponent } from './timetravel/component/probleme-admin/probleme-admin.component';
 import { AuthenticationInterceptor } from './timetravel/interceptor/authentication.interceptor';
+import { VoyageListComponent } from './timetravel/component/admin/voyage/voyage-list/voyage-list.component';
+import { VoyageEditComponent } from './timetravel/component/admin/voyage/voyage-edit/voyage-edit.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { AuthenticationInterceptor } from './timetravel/interceptor/authenticati
     MenuComponent,
     VoyageCoComponent,
     InscriptionComponent,
-    ProblemeAdminComponent
+    ProblemeAdminComponent,
+    VoyageListComponent,
+    VoyageEditComponent,
   ],
   imports: [
     BrowserModule,

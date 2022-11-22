@@ -10,7 +10,7 @@ export class AuthenticationService {
 
   public authentication(login: string, password: string): Observable<any> {
     let headers = new HttpHeaders({
-      Authorization: 'Basic' + btoa(login + ':' + password),
+      Authorization: 'Basic ' + btoa(login + ':' + password),
     });
     return this.httpClient.get('http://localhost:8080/time-travel/api/auth', {
       headers: headers,

@@ -28,8 +28,6 @@ import ajc.sopra.TimeTravel.service.CustomUserDetailsService;
 @DiscriminatorColumn(name="type_compte",columnDefinition = "ENUM('Admin','Client')")
 public abstract class Compte implements UserDetails {
 	
-
-	private static final Logger LOGGER = LoggerFactory.getLogger(Compte.class);
 	
 	@JsonView(JsonViews.Common.class)
 	@Id
@@ -105,7 +103,6 @@ public abstract class Compte implements UserDetails {
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		LOGGER.info("class name : "+getClass().getSimpleName());
 		return Arrays.asList(new SimpleGrantedAuthority("ROLE_"+getClass().getSimpleName()));
 	}
 
