@@ -40,9 +40,9 @@ export class AchatVoyageComponent implements OnInit {
 
   save() {
     sessionStorage.setItem('dateDepart', JSON.stringify(this.dateDepart));
-    sessionStorage.setItem('id', JSON.stringify(this.voyage.id));
+    sessionStorage.setItem('idVoyage', JSON.stringify(this.voyage.id));
+    sessionStorage.setItem('prixVoyage', JSON.stringify(this.voyage.prix));
     sessionStorage.setItem('heureDepart', JSON.stringify(this.heureDepart));
-    //this.router.navigateByUrl('/voyage/:id/passager');
 
   }
 }

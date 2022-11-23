@@ -22,6 +22,7 @@ import { CatalogueComponent } from './timetravel/component/catalogue/catalogue.c
 import { AchatVoyageComponent } from './timetravel/component/client/achat-voyage/achat-voyage.component';
 import { AchatPassagerComponent } from './timetravel/component/client/achat-passager/achat-passager.component';
 import { ReservationComponent } from './timetravel/component/client/reservation/reservation.component';
+import { ValidationReservationComponent } from './timetravel/component/client/validation-reservation/validation-reservation.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { ReservationComponent } from './timetravel/component/client/reservation/
     AchatVoyageComponent,
     AchatPassagerComponent,
     ReservationComponent,
+    ValidationReservationComponent,
   ],
   imports: [
     BrowserModule,

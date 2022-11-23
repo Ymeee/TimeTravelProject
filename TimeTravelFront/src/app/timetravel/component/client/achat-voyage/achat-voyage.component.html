@@ -26,8 +26,15 @@
         class="form-control"
         name="dateDepart"
         [(ngModel)]="dateDepart"
+        #dateCtrl="ngModel"
         required
       />
+      <div
+        *ngIf="dateCtrl.dirty && dateCtrl.invalid"
+        class="alert alert-danger"
+      >
+        Veuillez rentrer une date valide
+      </div>
     </div>
     <div class="form-group">
       <label for="heureDepart">Choisissez l'heure de votre départ :</label>
@@ -36,8 +43,15 @@
         class="form-control"
         name="heureDepart"
         [(ngModel)]="heureDepart"
+        #heureCtrl="ngModel"
         required
       />
+      <div
+        *ngIf="heureCtrl.dirty && heureCtrl.invalid"
+        class="alert alert-danger"
+      >
+        Veuillez rentrer une heure valide
+      </div>
     </div>
     <div class="form-group">
       <button

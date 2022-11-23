@@ -28,5 +28,6 @@
 <input name="age" [(ngModel)]="passager.age">
 
 
-<button (click)="ajout()">Enregistrer le passager</button>
-<button (click)="save()">Enregistrer la reservation</button>
+<button (click)="ajout()" class="btn btn-outline-primary">Ajouter un passager</button>
+<button *ngIf="passagerValid()" (click)="save()" class="btn btn-outline-primary">Enregistrer la reservation</button>
+<div *ngIf="!passagerValid()" class="alert alert-danger">Il faut au moins un passager pour le voyage</div>

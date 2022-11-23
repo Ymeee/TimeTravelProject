@@ -8,6 +8,7 @@ import { AchatPassagerComponent } from './timetravel/component/client/achat-pass
 import { AchatVoyageComponent } from './timetravel/component/client/achat-voyage/achat-voyage.component';
 import { InscriptionComponent } from './timetravel/component/client/inscription/inscription.component';
 import { ReservationComponent } from './timetravel/component/client/reservation/reservation.component';
+import { ValidationReservationComponent } from './timetravel/component/client/validation-reservation/validation-reservation.component';
 import { HomeComponent } from './timetravel/component/home/home.component';
 import { LoginComponent } from './timetravel/component/login/login.component';
 import { NotFoundComponent } from './timetravel/component/not-found/not-found.component';
@@ -79,6 +80,11 @@ export const routes: Routes = [
     path: 'reservation',
     component: ReservationComponent,
     canActivate: [ClientGuardService]
+  },
+  {
+    path: 'reservation/validation',
+    component: ValidationReservationComponent,
+    canActivate: [ClientGuardService],
   },
 
   {

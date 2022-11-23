@@ -1,18 +1,38 @@
-<p>{{ voyage.adresse?.ville }} - {{ voyage.adresse?.pays }}</p>
-<p>{{ voyage.epoque }}</p>
-<p>{{ voyage.dateArrivee }}</p>
-<p>{{ voyage.dateRetour }}</p>
-<p>{{ voyage.machine?.typeMachine }}</p>
-<p>{{ voyage.prix }}€ par personne</p>
+<h1>Votre voyage : </h1>
 
-<p>{{ dateDepart }}</p>
-<p>{{ heureDepart }}</p>
+<p>Destination : {{ voyage.adresse?.ville }} - {{ voyage.adresse?.pays }}</p>
+<p>Epoque : {{ voyage.epoque }}</p>
+<p>Date d'arrivee : {{ voyage.dateArrivee }}</p>
+<p>Date de retour : {{ voyage.dateRetour }}</p>
+<p>Machine : {{ voyage.machine?.typeMachine }}</p>
+<p>Prix : {{ voyage.prix }}€ par personne</p>
 
+<p>Vous partez : le {{ dateDepart }} à {{ heureDepart }}</p>
 
-<tr *ngFor="let p of passagers">
-  <td>{{ p.nom }}</td>
-  <td>{{ p.prenom }}</td>
-  <td>{{ p.age }}</td>
+<p>Les passagers : </p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Prenom</th>
+      <th>Age</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr *ngFor="let p of passagersJson">
+  <td>{{ p._nom }}</td>
+  <td>{{ p._prenom }}</td>
+  <td>{{ p._age }}</td>
 </tr>
+</tbody>
+</table>
+
+<p *ngIf="voyage.prix">Prix total du voyage : {{ nbPassagers * voyage.prix }}€</p>
+
+<a routerLink="/reservation/validation" routerLinkActive="active" class="btn btn-link"
+  >Valider ma réservation</a
+>
+
+
 
 
