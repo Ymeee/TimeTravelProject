@@ -15,7 +15,7 @@
     <td>{{ p.prenom }}</td>
     <td>{{ p.age }}</td>
     <td>
-      <button class="btn btn-outline-danger">
+      <button (click)="delete(p.id!)" class="btn btn-outline-danger">
         Supprimer
       </button>
     </td>
@@ -29,5 +29,5 @@
 
 
 <button (click)="ajout()" class="btn btn-outline-primary">Ajouter un passager</button>
-<button *ngIf="passagerValid()" (click)="save()" class="btn btn-outline-primary">Enregistrer la reservation</button>
+<button *ngIf="passagerValid()" (click)="save()" class="btn btn-outline-primary">Enregistrer les passagers</button>
 <div *ngIf="!passagerValid()" class="alert alert-danger">Il faut au moins un passager pour le voyage</div>

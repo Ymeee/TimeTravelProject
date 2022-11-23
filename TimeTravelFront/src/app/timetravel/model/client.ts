@@ -1,6 +1,13 @@
 import { Adresse } from "./adresse";
+import { Passager } from "./passager";
 
 export class Client {
+  public get passagers(): Passager[] | undefined {
+    return this._passagers;
+  }
+  public set passagers(value: Passager[] | undefined) {
+    this._passagers = value;
+  }
   public get tel(): string | undefined {
     return this._tel;
   }
@@ -58,6 +65,7 @@ export class Client {
     private _anniversaire?: Date,
     private _mail?: string,
     private _adresse?: Adresse,
-    private _tel?: string
+    private _tel?: string,
+    private _passagers?: Passager[]
   ) {}
 }

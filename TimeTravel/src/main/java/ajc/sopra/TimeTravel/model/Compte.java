@@ -2,6 +2,7 @@ package ajc.sopra.TimeTravel.model;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
@@ -101,9 +102,24 @@ public abstract class Compte implements UserDetails {
 		this.prenom = prenom;
 	}
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(ConsoleService.class);
-
 	
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Compte other = (Compte) obj;
+		return Objects.equals(id, other.id);
+	}
+
 	@JsonView(JsonViews.Common.class)
 	public String getRole() {
 		return "ROLE_"+getClass().getSimpleName();
@@ -111,7 +127,6 @@ public abstract class Compte implements UserDetails {
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		LOGGER.info("--------------infos : ROLE_"+getClass().getSimpleName());
 		return Arrays.asList(new SimpleGrantedAuthority("ROLE_"+getClass().getSimpleName()));
 	}
 

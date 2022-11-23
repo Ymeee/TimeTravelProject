@@ -19,6 +19,8 @@ export class ReservationComponent implements OnInit {
   prixReel!: number;
   prix?: number = 0;
 
+  idVoyage= JSON.parse(sessionStorage.getItem('idVoyage')!);
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private voyageSrv: VoyageService,
@@ -26,9 +28,8 @@ export class ReservationComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    let idVoyage = JSON.parse(sessionStorage.getItem('idVoyage')!);
     this.activatedRoute.params.subscribe((params) => {
-      this.voyageSrv.findById(idVoyage).subscribe((data) => {
+      this.voyageSrv.findById(this.idVoyage).subscribe((data) => {
         this.voyage = data;
       });
     });

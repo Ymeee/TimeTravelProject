@@ -16,6 +16,7 @@ import ajc.sopra.TimeTravel.exception.IdException;
 import ajc.sopra.TimeTravel.model.Client;
 import ajc.sopra.TimeTravel.repository.ClientRepository;
 import ajc.sopra.TimeTravel.repository.CompteRepository;
+import ajc.sopra.TimeTravel.repository.PassagerRepository;
 
 @Service
 public class ClientService {
@@ -29,8 +30,15 @@ public class ClientService {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
+	@Autowired 
+	private PassagerRepository passagerRepo;
+	
 	public List<Client> findAll() {
 		return clientRepo.findAll();
+	}
+	
+	public Client findByIdFetchPassagers(Integer id) {
+		return clientRepo.findByIdFetchingPassagers(id).orElseThrow(IdException::new);
 	}
 
 	public Client findById(Integer id) {
@@ -93,6 +101,7 @@ public class ClientService {
 	}
 
 	public void deleteById(Integer id) {
+		passagerRepo.deleteByClient(findById(id));
 		clientRepo.deleteById(id);
 	}
 }

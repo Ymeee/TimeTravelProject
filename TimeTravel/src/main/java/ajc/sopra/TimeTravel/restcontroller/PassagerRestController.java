@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import ajc.sopra.TimeTravel.model.JsonViews;
 import ajc.sopra.TimeTravel.model.Passager;
+import ajc.sopra.TimeTravel.service.ClientService;
 import ajc.sopra.TimeTravel.service.PassagerService;
 
 @RestController
@@ -31,28 +32,23 @@ import ajc.sopra.TimeTravel.service.PassagerService;
 public class PassagerRestController {
 	@Autowired
 	private PassagerService passagerSrv;
+	
+	@Autowired
+	private ClientService clientSrv;
 
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.PassagerWithClient.class)
 	@GetMapping("/{id}")
 	public Passager findById(@PathVariable Integer id) {
 		return passagerSrv.findById(id);
 	}
 
 	@GetMapping("")
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.PassagerWithClient.class)
 	public List<Passager> findAll() {
 		return passagerSrv.findAll();
 	}
 
-	@ResponseStatus(code = HttpStatus.CREATED)
-	@PostMapping("")
-	@JsonView(JsonViews.Common.class)
-	public Passager create(@Valid @RequestBody Passager passager, BindingResult br) {
-		if (br.hasErrors()) {
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "données incorrectes");
-		}
-		return passagerSrv.create(passager);
-	}
+	
 
 	@DeleteMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)

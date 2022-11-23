@@ -46,15 +46,15 @@ export class ReservationService {
 
   public reservationToJson(reservation: Reservation): any {
     let reservationJson = {
-      client: this.clientSrv.clientToJson(reservation.client!),
-      passager: this.passagerSrv.passagerToJson(reservation.passager!),
-      voyage: this.voyageSrv.voyageToJson(reservation.voyage!),
+      client: reservation.client,
+      passager: reservation.passager,
+      voyage: reservation.voyage,
       prixReel: reservation.prixReel,
       etatVoyage: reservation.etatVoyage,
       dateDepart: reservation.dateDepart,
       heureDepart: reservation.heureDepart
     };
-
+    console.log(reservationJson);
     if (reservation.id) {
       Object.assign(reservationJson, { id: reservation.id });
     }

@@ -38,6 +38,10 @@ public class Client extends Compte {
 	@Embedded
 	private Adresse adresse;
 	
+	@JsonView(JsonViews.ClientWithPassager.class)
+	@OneToMany(mappedBy = "client")
+	private List<Passager> passagers;
+	
 	public Client() {
 	}
 
@@ -89,6 +93,15 @@ public class Client extends Compte {
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
+
+	public List<Passager> getPassagers() {
+		return passagers;
+	}
+
+	public void setPassagers(List<Passager> passagers) {
+		this.passagers = passagers;
+	}
+	
 	
 	
 	

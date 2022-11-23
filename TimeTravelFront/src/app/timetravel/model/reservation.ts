@@ -34,10 +34,10 @@ export class Reservation {
   public set voyage(value: Voyage | undefined) {
     this._voyage = value;
   }
-  public get passager(): Passager | undefined {
+  public get passager(): Passager[] | undefined {
     return this._passager;
   }
-  public set passager(value: Passager | undefined) {
+  public set passager(value: Passager[] | undefined) {
     this._passager = value;
   }
   public get client(): Client | undefined {
@@ -55,7 +55,7 @@ export class Reservation {
   constructor(
     private _id?: number,
     private _client?: Client,
-    private _passager?: Passager,
+    private _passager?: Passager[],
     private _voyage?: Voyage,
     private _prixReel?: number,
     private _etatVoyage?: EtatVoyage,

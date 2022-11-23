@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Passager } from 'src/app/timetravel/model/passager';
 import { Reservation } from 'src/app/timetravel/model/reservation';
 import { Voyage } from 'src/app/timetravel/model/voyage';
@@ -25,8 +25,6 @@ export class AchatVoyageComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private voyageSrv: VoyageService,
-    private passagerSrv: PassagerService,
-    private reservationSrv: ReservationService,
     private router: Router
   ) {}
 
@@ -36,6 +34,7 @@ export class AchatVoyageComponent implements OnInit {
         this.voyage = data;
       });
     });
+
   }
 
   save() {
@@ -43,6 +42,6 @@ export class AchatVoyageComponent implements OnInit {
     sessionStorage.setItem('idVoyage', JSON.stringify(this.voyage.id));
     sessionStorage.setItem('prixVoyage', JSON.stringify(this.voyage.prix));
     sessionStorage.setItem('heureDepart', JSON.stringify(this.heureDepart));
-
+    this.router.navigateByUrl('/voyage/'+this.voyage.id+'/passager');
   }
 }

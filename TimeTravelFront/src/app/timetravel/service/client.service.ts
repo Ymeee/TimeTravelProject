@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Client } from '../model/client';
+import { Passager } from '../model/passager';
+import { PassagerService } from './passager.service';
 
 @Injectable({
   providedIn: 'root',
@@ -9,13 +11,32 @@ import { Client } from '../model/client';
 export class ClientService {
   static URL: string = 'http://localhost:8080/time-travel/api/client';
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private passagerSrv: PassagerService) {}
 
   public inscription(client: any): Observable<Client> {
     return this.httpClient.post<Client>(
       `${ClientService.URL}/inscription`,
       client
     );
+  }
+
+  public create(passager: Passager, id: number): Observable<Passager> {
+    return this.httpClient.post<Passager>(
+      `${ClientService.URL}/${id}/passager`,
+      this.passagerSrv.passagerToJson(passager)
+    )
+  }
+
+  public findAll(id: number): Observable<Client> {
+    return this.httpClient.get<Client>(
+      `${ClientService.URL}/${id}/passager`
+    )
+  }
+
+  public findById(id: number): Observable<Client> {
+    return this.httpClient.get<Client>(
+      `${ClientService.URL}/${id}`
+    )
   }
 
   public checkMailExists(mail: string): Observable<boolean> {
@@ -39,6 +60,9 @@ export class ClientService {
       mail: client.mail,
       adresse: client.adresse,
       tel: client.tel,
+    };
+    if (client.passagers) {
+      Object.assign(clientJson, {passagers: client.passagers})
     };
     if (client.id) {
       Object.assign(clientJson, { id: client.id });

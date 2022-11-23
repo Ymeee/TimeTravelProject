@@ -40,12 +40,6 @@ export class Voyage {
   public set adresse(value: Adresse | undefined) {
     this._adresse = value;
   }
-  public get reservation(): any | undefined {
-    return this._reservation;
-  }
-  public set reservation(value: any | undefined) {
-    this._reservation = value;
-  }
   public get id(): number | undefined {
     return this._id;
   }
@@ -54,7 +48,6 @@ export class Voyage {
   }
   constructor(
     private _id?: number,
-    private _reservation?: Reservation,
     private _adresse?: Adresse,
     private _machine?: Machine,
     private _epoque?: Epoque,

@@ -1,4 +1,4 @@
-import { Reservation } from './reservation';
+import { Reservation } from "./reservation";
 
 export class Passager {
   public get id(): number | undefined {
@@ -19,7 +19,7 @@ export class Passager {
   public set prenom(value: string | undefined) {
     this._prenom = value;
   }
-  public get age(): number | undefined {
+  public get age(): number  | undefined{
     return this._age;
   }
   public set age(value: number | undefined) {
@@ -30,6 +30,6 @@ export class Passager {
     private _id?: number,
     private _nom?: string,
     private _prenom?: string,
-    private _age?: number,
+    private _age?: number
   ) {}
 }
