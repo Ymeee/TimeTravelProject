@@ -1,3 +1,5 @@
 export enum Guide {
-  Marty, Bob, Sophia
+  Marty = 'Marty',
+  Bob = 'Bob',
+  Sophia = 'Sophia',
 }

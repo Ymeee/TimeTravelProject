@@ -22,10 +22,10 @@ export class AuthenticationService {
   }
 
   public isAdmin(): boolean {
-    return sessionStorage.getItem('role') == 'admin';
+    return sessionStorage.getItem('role') == 'Admin';
   }
 
   public isClient(): boolean {
-    return sessionStorage.getItem('role') == 'client';
+    return sessionStorage.getItem('role') == 'Client';
   }
 }

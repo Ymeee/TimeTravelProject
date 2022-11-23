@@ -1,7 +1,7 @@
 export enum Epoque {
-  Antiquite,
-  MoyenAge,
-  Renaissance,
-  Moderne
+  Antiquite = 'Antiquite',
+  MoyenAge = 'Moyen Age',
+  Renaissance = 'Renaissance',
+  Moderne = 'Moderne'
 }
 

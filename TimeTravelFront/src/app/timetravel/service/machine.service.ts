@@ -46,6 +46,9 @@ export class MachineService {
       typeMachine: machine.typeMachine,
       etatMachine: machine.etatMachine,
     };
+    if (machine.id) {
+      Object.assign(machineJson, { id: machine.id });
+    }
     return machineJson;
   }
 }

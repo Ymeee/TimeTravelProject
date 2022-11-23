@@ -1,6 +1,7 @@
 package ajc.sopra.TimeTravel.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
@@ -52,11 +53,11 @@ public class Voyage {
 	
 	@JsonView(JsonViews.Common.class)
 	@Column(nullable = false)
-	private LocalDateTime dateArrivee;
+	private LocalDate dateArrivee;
 	
 	@JsonView(JsonViews.Common.class)
 	@Column(nullable = false)
-	private LocalDateTime dateRetour;
+	private LocalDate dateRetour;
 	
 	@JsonView(JsonViews.Common.class)
 	@Column(nullable = false)
@@ -69,7 +70,7 @@ public class Voyage {
 	}
 
 	public Voyage(Integer id, List<Reservation> reservation, Adresse adresse, Machine machine, Epoque epoque,
-			LocalDateTime dateArrivee, LocalDateTime dateRetour,
+			LocalDate dateArrivee, LocalDate dateRetour,
 			double prix) {
 		this.id = id;
 		this.reservation = reservation;
@@ -82,7 +83,7 @@ public class Voyage {
 	}
 
 	public Voyage(List<Reservation> reservation, Adresse adresse, Machine machine, Epoque epoque,
-			LocalDateTime dateArrivee, LocalDateTime dateRetour,
+			LocalDate dateArrivee, LocalDate dateRetour,
 			double prix) {
 		this.reservation = reservation;
 		this.adresse = adresse;
@@ -133,19 +134,19 @@ public class Voyage {
 		this.epoque = epoque;
 	}
 
-	public LocalDateTime getDateArrivee() {
+	public LocalDate getDateArrivee() {
 		return dateArrivee;
 	}
 
-	public void setDateArrivee(LocalDateTime dateArrivee) {
+	public void setDateArrivee(LocalDate dateArrivee) {
 		this.dateArrivee = dateArrivee;
 	}
 
-	public LocalDateTime getDateRetour() {
+	public LocalDate getDateRetour() {
 		return dateRetour;
 	}
 
-	public void setDateRetour(LocalDateTime dateRetour) {
+	public void setDateRetour(LocalDate dateRetour) {
 		this.dateRetour = dateRetour;
 	}
 

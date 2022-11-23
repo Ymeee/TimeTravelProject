@@ -24,25 +24,26 @@ export class LoginComponent implements OnInit {
         this.error = false;
         sessionStorage.setItem(
           'token',
-          'Basic ' + btoa(this.login + ':' + this.password)
+          'Basic ' + window.btoa(this.login + ':' + this.password)
         );
+        console.log(data)
         if (data.role == 'ROLE_Client') {
           let client = new Client(
-            data.client.id,
-            data.client.login,
-            data.client.nom,
-            data.client.prenom,
-            data.client.anniversaire,
-            data.client.mail,
-            data.client.adresse,
-            data.client.tel
+            data.id,
+            data.login,
+            data.nom,
+            data.prenom,
+            data.anniversaire,
+            data.mail,
+            data.adresse,
+            data.tel
           );
           sessionStorage.setItem('client', JSON.stringify(client));
-          sessionStorage.setItem('role', 'client');
+          sessionStorage.setItem('role', 'Client');
           sessionStorage.setItem('client', JSON.stringify(data.login));
 
         } else {
-          sessionStorage.setItem('role', 'admin');
+          sessionStorage.setItem('role', 'Admin');
         }
         this.router.navigateByUrl('/home');
       },

@@ -19,8 +19,6 @@ export class MenuComponent implements OnInit {
     this.router.navigateByUrl('/home');
   }
 
-
-
   get admin() {
     return this.authSrv.isAdmin();
   }

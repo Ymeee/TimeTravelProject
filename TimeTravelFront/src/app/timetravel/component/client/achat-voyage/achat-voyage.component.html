@@ -1,0 +1,54 @@
+<p>achat-voyage works!</p>
+<!--
+  choisir
+      date
+      heure
+  de départ
+  choisir si guide ou pas
+  entrer les différents passagers
+
+  prixReel = nb passagers * prix
+
+-->
+
+<div>
+  <p>{{ voyage.adresse?.ville }} - {{ voyage.adresse?.pays }}</p>
+  <p>{{ voyage.epoque }}</p>
+  <p>{{ voyage.dateArrivee }}</p>
+  <p>{{ voyage.dateRetour }}</p>
+  <p>{{ voyage.machine?.typeMachine }}</p>
+  <p>{{ voyage.prix }}€ par personne</p>
+  <form (ngSubmit)="save()" #form="ngForm">
+    <div class="form-group">
+      <label for="dateDepart">Choisissez la date de votre départ :</label>
+      <input
+        type="date"
+        class="form-control"
+        name="dateDepart"
+        [(ngModel)]="dateDepart"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="heureDepart">Choisissez l'heure de votre départ :</label>
+      <input
+        type="time"
+        class="form-control"
+        name="heureDepart"
+        [(ngModel)]="heureDepart"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <button
+        routerLink="/voyage/{{ voyage.id }}/passager"
+        routerLinkActive="active"
+        type="submit"
+        class="btn btn-outline-primary"
+        [disabled]="form.invalid"
+      >
+        Enregistrer
+      </button>
+    </div>
+  </form>
+</div>

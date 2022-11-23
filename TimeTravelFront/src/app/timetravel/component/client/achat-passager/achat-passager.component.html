@@ -1,0 +1,32 @@
+<h4>Renseignez le(s) passager(s)</h4>
+<table class="table" name="passagers">
+<thead>
+  <tr>
+    <th>Nom:</th>
+    <th>Prenom:</th>
+    <th>Age:</th>
+    <th></th>
+    <th></th>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let p of passagers">
+    <td>{{ p.nom }}</td>
+    <td>{{ p.prenom }}</td>
+    <td>{{ p.age }}</td>
+    <td>
+      <button class="btn btn-outline-danger">
+        Supprimer
+      </button>
+    </td>
+  </tr>
+</tbody>
+</table>
+
+<input name="nom" [(ngModel)]="passager.nom">
+<input name="prenom" [(ngModel)]="passager.prenom">
+<input name="age" [(ngModel)]="passager.age">
+
+
+<button (click)="ajout()">Enregistrer le passager</button>
+<button (click)="save()">Enregistrer la reservation</button>

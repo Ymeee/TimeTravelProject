@@ -4,6 +4,12 @@ import { Passager } from "./passager";
 import { Voyage } from "./voyage";
 
 export class Reservation {
+  public get heureDepart(): any | undefined {
+    return this._heureDepart;
+  }
+  public set heureDepart(value: any | undefined) {
+    this._heureDepart = value;
+  }
   public get dateDepart(): Date | undefined {
     return this._dateDepart;
   }
@@ -53,6 +59,7 @@ export class Reservation {
     private _voyage?: Voyage,
     private _prixReel?: number,
     private _etatVoyage?: EtatVoyage,
-    private _dateDepart?: Date
+    private _dateDepart?: Date,
+    private _heureDepart?: any
   ) {}
 }

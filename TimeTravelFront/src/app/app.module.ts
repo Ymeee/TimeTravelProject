@@ -16,6 +16,12 @@ import { ProblemeAdminComponent } from './timetravel/component/probleme-admin/pr
 import { AuthenticationInterceptor } from './timetravel/interceptor/authentication.interceptor';
 import { VoyageListComponent } from './timetravel/component/admin/voyage/voyage-list/voyage-list.component';
 import { VoyageEditComponent } from './timetravel/component/admin/voyage/voyage-edit/voyage-edit.component';
+import { MachineEditComponent } from './timetravel/component/admin/machine/machine-edit/machine-edit.component';
+import { MachineListComponent } from './timetravel/component/admin/machine/machine-list/machine-list.component';
+import { CatalogueComponent } from './timetravel/component/catalogue/catalogue.component';
+import { AchatVoyageComponent } from './timetravel/component/client/achat-voyage/achat-voyage.component';
+import { AchatPassagerComponent } from './timetravel/component/client/achat-passager/achat-passager.component';
+import { ReservationComponent } from './timetravel/component/client/reservation/reservation.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +35,12 @@ import { VoyageEditComponent } from './timetravel/component/admin/voyage/voyage-
     ProblemeAdminComponent,
     VoyageListComponent,
     VoyageEditComponent,
+    MachineEditComponent,
+    MachineListComponent,
+    CatalogueComponent,
+    AchatVoyageComponent,
+    AchatPassagerComponent,
+    ReservationComponent,
   ],
   imports: [
     BrowserModule,

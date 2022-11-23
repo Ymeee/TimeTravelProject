@@ -1,6 +1,8 @@
 package ajc.sopra.TimeTravel.service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,8 +58,11 @@ public class ReservationService {
 		if (reservation.getEtatVoyage() == null) {
 			throw new ReservationException("probleme voyage");
 		}
-		if (reservation.getDateDepart() == null || reservation.getDateDepart().isBefore(LocalDateTime.now())) {
+		if (reservation.getDateDepart() == null || reservation.getDateDepart().isBefore(LocalDate.now())) {
 			throw new ReservationException("probleme date depart (present)");
+		}
+		if (reservation.getHeureDepart() == null || reservation.getHeureDepart().isBefore(LocalTime.of(8,0,0)) || reservation.getHeureDepart().isAfter(LocalTime.of(18,0,0))) {
+			throw new ReservationException("probleme heure depart (present)");
 		}
 		return reservationRepo.save(reservation);
 	}

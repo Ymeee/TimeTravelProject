@@ -1,5 +1,5 @@
 export enum EtatMachine {
-  Disponible,
-  Reservee,
-  Inutilisable,
+  Disponible = 'Disponible',
+  Reservee = 'Reservee',
+  Inutilisable = 'Inutilisable'
 }

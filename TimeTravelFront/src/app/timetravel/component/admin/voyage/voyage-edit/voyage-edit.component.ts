@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Epoque } from 'src/app/timetravel/enum/epoque';
 import { Adresse } from 'src/app/timetravel/model/adresse';
@@ -29,6 +28,7 @@ export class VoyageEditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+
     this.voyage.adresse = this.adresse;
 
     this.activatedRoute.params.subscribe((params) => {
@@ -47,7 +47,6 @@ export class VoyageEditComponent implements OnInit {
   }
 
   save() {
-    console.log('-----------'+this.voyage.dateArrivee)
     if (this.voyage.id) {
       this.voyageSrv
         .update(this.voyage)

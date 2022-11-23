@@ -1,0 +1,18 @@
+<p>{{ voyage.adresse?.ville }} - {{ voyage.adresse?.pays }}</p>
+<p>{{ voyage.epoque }}</p>
+<p>{{ voyage.dateArrivee }}</p>
+<p>{{ voyage.dateRetour }}</p>
+<p>{{ voyage.machine?.typeMachine }}</p>
+<p>{{ voyage.prix }}€ par personne</p>
+
+<p>{{ dateDepart }}</p>
+<p>{{ heureDepart }}</p>
+
+
+<tr *ngFor="let p of passagers">
+  <td>{{ p.nom }}</td>
+  <td>{{ p.prenom }}</td>
+  <td>{{ p.age }}</td>
+</tr>
+
+

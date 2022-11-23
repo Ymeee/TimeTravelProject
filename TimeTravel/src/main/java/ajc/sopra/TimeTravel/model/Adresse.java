@@ -19,11 +19,13 @@ import com.fasterxml.jackson.annotation.JsonView;
 @Embeddable
 public class Adresse {
 	
-	
+	@JsonView(JsonViews.Common.class)
 	@Column(length = 20)
 	private String numero;
+	@JsonView(JsonViews.Common.class)
 	@Column(length = 35)
 	private String rue;
+	@JsonView(JsonViews.Common.class)
 	@Column(length = 15)
 	private String cp;
 	@JsonView(JsonViews.Common.class)

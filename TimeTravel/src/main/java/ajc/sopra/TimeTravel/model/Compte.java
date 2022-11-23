@@ -21,6 +21,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import ajc.sopra.TimeTravel.service.ConsoleService;
 import ajc.sopra.TimeTravel.service.CustomUserDetailsService;
 
 @Entity
@@ -100,9 +101,17 @@ public abstract class Compte implements UserDetails {
 		this.prenom = prenom;
 	}
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(ConsoleService.class);
+
+	
+	@JsonView(JsonViews.Common.class)
+	public String getRole() {
+		return "ROLE_"+getClass().getSimpleName();
+	}
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
+		LOGGER.info("--------------infos : ROLE_"+getClass().getSimpleName());
 		return Arrays.asList(new SimpleGrantedAuthority("ROLE_"+getClass().getSimpleName()));
 	}
 

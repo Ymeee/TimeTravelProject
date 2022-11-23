@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Machine } from '../model/machine';
 import { Voyage } from '../model/voyage';
 import { MachineService } from './machine.service';
 
@@ -40,7 +41,8 @@ export class VoyageService {
     );
   }
 
-  private voyageToJson(voyage: Voyage): any {
+
+  public voyageToJson(voyage: Voyage): any {
     let voyageJson = {
       machine: this.machineSrv.machineToJson(voyage.machine!),
       epoque: voyage.epoque,

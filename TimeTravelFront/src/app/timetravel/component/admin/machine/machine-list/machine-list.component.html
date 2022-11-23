@@ -1,0 +1,31 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>id:</th>
+      <th>type:</th>
+      <th>etat:</th>
+      <th>date:</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let m of machinesObservable | async">
+      <td>{{ m.id }}</td>
+      <td>{{ m.typeMachine }}</td>
+      <td>{{ m.etatMachine }}</td>
+      <td>{{ m.dateMachine }}</td>
+      <td>
+        <a routerLink="/machine/edit/{{ m.id }}" routerLinkActive="active"
+          >Editer</a
+        >
+      </td>
+      <td>
+        <button class="btn btn-outline-danger" (click)="delete(m.id!)">
+          Supprimer
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<a routerLink="/machine/edit" routerLinkActive="active">Nouvelle machine</a>

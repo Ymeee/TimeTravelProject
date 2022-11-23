@@ -1,0 +1,66 @@
+<div>
+  <form (ngSubmit)="save()" #form="ngForm">
+    <div class="form-group">
+      <label for="id">id:</label>
+      <input
+        class="form-control"
+        id="id"
+        name="id"
+        [(ngModel)]="machine.id"
+        readonly
+      />
+    </div>
+    <div class="form-group">
+      <label for="typeMachine">type:</label>
+      <select
+        class="form-control"
+        name="machine.typeMachine"
+        [(ngModel)]="machine.typeMachine"
+        required
+        #typeMachineCtrl="ngModel"
+      >
+      <option *ngFor="let t of typeMachines | keyvalue" [ngValue]="t.value">
+        {{ t.value }}
+      </option>
+      </select>
+      <div *ngIf="typeMachineCtrl.invalid">*type machine obligatoire</div>
+    </div>
+
+    <div class="form-group">
+      <label for="etatMachine">etat:</label>
+      <select
+        class="form-control"
+        name="machine.etatMachine"
+        [(ngModel)]="machine.etatMachine"
+        required
+        #etatMachineCtrl="ngModel"
+      >
+      <option *ngFor="let e of etatMachines | keyvalue" [ngValue]="e.value">
+        {{ e.value }}
+      </option>
+      </select>
+      <div *ngIf="etatMachineCtrl.invalid">*etat machine obligatoire</div>
+    </div>
+
+    <div class="form-group">
+      <label for="dateMachine">date:</label>
+      <input
+        type="date"
+        class="form-control"
+        name="machine.dateMachine"
+        [(ngModel)]="machine.dateMachine"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-outline-primary">enregistrer</button>
+      <a
+        routerLink="/voyage"
+        routerLinkActive="active"
+        class="btn btn-outline-warning"
+        >annuler</a
+      >
+    </div>
+  </form>
+</div>

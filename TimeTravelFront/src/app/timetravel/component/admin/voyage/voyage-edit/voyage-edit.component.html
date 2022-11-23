@@ -33,36 +33,30 @@
         class="form-control"
         name="voyage.epoque"
         [(ngModel)]="voyage.epoque"
-        [compareWith]="byId"
         #epoqueCtrl="ngModel"
         required
       >
-        <option *ngFor="let epoque of epoques | keyvalue" [value]="epoque.key">
-          {{ epoque.key }}
+        <option *ngFor="let e of epoques | keyvalue" [ngValue]="e.value">
+          {{ e.value }}
         </option>
       </select>
       <div *ngIf="epoqueCtrl.invalid">*epoque obligatoire</div>
     </div>
 
     <div class="form-group">
-      <label for="dateArrivee">date d'arrivee:</label>
+      <label for="dateArrivee">date d'arrivee :</label>
       <input
         type="date"
         class="form-control"
-        name="voyage.dateArrivee.date"
-        required
-      />
-      <input
-        type="time"
-        class="form-control"
-        name="voyage.dateArrivee.time"
+        name="voyage.dateArrivee"
+        [(ngModel)]="voyage.dateArrivee"
         required
       />
     </div>
     <div class="form-group">
       <label for="dateRetour">date de retour:</label>
       <input
-        type="datetime-local"
+        type="date"
         class="form-control"
         name="voyage.dateRetour"
         [(ngModel)]="voyage.dateRetour"

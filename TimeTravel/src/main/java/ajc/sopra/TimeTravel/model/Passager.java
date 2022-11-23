@@ -15,9 +15,9 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonView;
 
 
-	@Entity
-	@Table(name="passager")
-	public class Passager {
+@Entity
+@Table(name="passager")
+public class Passager {
 		@JsonView(JsonViews.Common.class)
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)

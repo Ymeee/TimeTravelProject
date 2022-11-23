@@ -1,0 +1,31 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Destination:</th>
+      <th>Epoque:</th>
+      <th>Date d'arrivee (10h) :</th>
+      <th>Date de retour (17h) :</th>
+      <th>Machine:</th>
+      <th>Prix:</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let v of voyages">
+      <td>{{ v.adresse?.ville }} - {{ v.adresse?.pays }}</td>
+      <td>{{ v.epoque }}</td>
+      <td>{{ v.dateArrivee }}</td>
+      <td>{{ v.dateRetour }}</td>
+      <td>{{ v.machine?.typeMachine }}</td>
+      <td>{{ v.prix }}</td>
+      <td>
+      <a
+        routerLink="/voyage/{{ v.id }}"
+        routerLinkActive="active"
+        class="btn btn-outline-warning"
+        >Réserver ce voyage</a
+      >
+      </td>
+    </tr>
+  </tbody>
+</table>
+

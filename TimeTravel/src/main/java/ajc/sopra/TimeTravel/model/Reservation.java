@@ -1,6 +1,8 @@
 package ajc.sopra.TimeTravel.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -36,8 +38,11 @@ public class Reservation {
 	
 	@JsonView(JsonViews.Common.class)
 	@Column(nullable = false)
-	private LocalDateTime dateDepart;
+	private LocalDate dateDepart;
 	
+	@JsonView(JsonViews.Common.class)
+	@Column(nullable = false)
+	private LocalTime heureDepart;
 	
 	@JsonView(JsonViews.Common.class)
 	@ManyToMany
@@ -60,7 +65,7 @@ public class Reservation {
 	}
 
 
-	public Reservation(Integer id, Client client, List<Passager> passager, Voyage voyage, double prixReel, EtatVoyage etatVoyage, LocalDateTime dateDepart) {
+	public Reservation(Integer id, Client client, List<Passager> passager, Voyage voyage, double prixReel, EtatVoyage etatVoyage, LocalDate dateDepart, LocalTime heureDepart) {
 		this.id = id;
 		this.client = client;
 		this.passager = passager;
@@ -68,16 +73,18 @@ public class Reservation {
 		this.prixReel = prixReel;
 		this.etatVoyage = etatVoyage;
 		this.dateDepart = dateDepart;
+		this.heureDepart = heureDepart;
 	}
 
 
-	public Reservation(Client client, List<Passager> passager, Voyage voyage, double prixReel, EtatVoyage etatVoyage, LocalDateTime dateDepart) {
+	public Reservation(Client client, List<Passager> passager, Voyage voyage, double prixReel, EtatVoyage etatVoyage, LocalDate dateDepart,LocalTime heureDepart) {
 		this.client = client;
 		this.passager = passager;
 		this.voyage = voyage;
 		this.prixReel = prixReel;
 		this.etatVoyage = etatVoyage;
 		this.dateDepart = dateDepart;
+		this.heureDepart = heureDepart;
 	}
 
 
@@ -147,20 +154,24 @@ public class Reservation {
 	}
 
 
-	public LocalDateTime getDateDepart() {
+	public LocalDate getDateDepart() {
 		return dateDepart;
 	}
 
 
-	public void setDateDepart(LocalDateTime dateDepart) {
+	public void setDateDepart(LocalDate dateDepart) {
 		this.dateDepart = dateDepart;
 	}
-	
-	
 
-	
-	
-	
-	
+
+	public LocalTime getHeureDepart() {
+		return heureDepart;
+	}
+
+
+	public void setHeureDepart(LocalTime heureDepart) {
+		this.heureDepart = heureDepart;
+	}
+		
 	
 }

@@ -1,3 +1,4 @@
 export enum TypeMachine {
-  DeLorean, TARDIS
+  DeLorean = 'DeLorean',
+  TARDIS = 'TARDIS'
 }
