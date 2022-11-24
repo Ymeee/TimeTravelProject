@@ -1,0 +1,156 @@
+.form-control {
+   
+    background-color: rgb(231, 231, 233);
+    margin-left: 20%;
+    text-align: center;
+    border-left: 1rem solid;
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+
+}
+.form-group {
+   
+    font-size: large;
+    font-family: Times, "Times New Roman", Georgia, serif;
+    padding: 1em;
+    margin-left: 5%;
+    font-weight: bold;
+    color:rgb(3, 26, 47);
+   
+}
+
+.connexion{
+font-weight: bold;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  letter-spacing: 2px;
+  text-transform: capitalize;
+  color: rgb(240, 243, 246);
+  text-shadow: 1px 1px 1px rgb(21, 19, 66), 2px 2px 1px gray;
+  font-family: fantasy;
+
+
+}
+  
+  .formulaire{
+    position: relative;
+  }
+
+  form {
+    text-align: center;
+    margin-top: 15%;
+    background: rgba(86, 70, 70, 0.3);
+    padding: 2rem;
+    height: 520px;
+    border-radius: 500px;
+    border-left: 1px solid rgba(255, 255, 255, .3);
+    border-top: 1px solid rgba(255, 255, 255, .3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    -moz-backdrop-filter: blur(10px);
+    box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, .2);
+    text-align: center;
+  }
+  input {
+    background: transparent;
+    border: none;
+    border-left: 1px solid rgba(255, 255, 255, .3);
+    border-top: 1px solid rgba(255, 255, 255, .3);
+    padding: 1rem;
+    width: 200px;
+    border-radius: 50px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    -moz-backdrop-filter: blur(5px);
+    box-shadow: 4px 4px 60px rgba(0, 0, 0, .2);
+    color: white;
+    font-weight: 500;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
+    transition: all .3s;
+    margin-bottom: 2em;
+  }
+  input:hover,
+    input[type="login"]:focus,
+    input[type="password"]:focus{
+  background: rgba(255,255,255,0.1);
+  box-shadow: 4px 4px 60px 8px rgba(0,0,0,0.2);
+}
+    
+button {
+  
+    background:  rgba(255, 255, 255, .3);
+    border: none;
+    border-left: 1px solid rgba(255, 255, 255, .3);
+    border-top: 1px solid rgba(255, 255, 255, .3);
+    padding: 1rem;
+    width: 200px;
+    border-radius: 50px;
+
+    box-shadow: 4px 4px 60px rgba(0, 0, 0, .2);
+    color: white;
+    font-weight: 500;
+    transition: all .3s;
+    margin-bottom: 2em;
+    margin-right: 5%;
+}
+a{
+    background: rgba(255, 255, 255, .3) ;
+    border: none;
+    border-left: 1px solid rgba(255, 255, 255, .3);
+    border-top: 1px solid rgba(255, 255, 255, .3);
+    padding: 1rem;
+    width: 200px;
+    border-radius: 50px;
+  
+    box-shadow: 4px 4px 60px rgba(0, 0, 0, .2);
+    color: white;
+    font-weight: 500;
+    margin-bottom: 2em;
+    margin-right: 9%;
+}
+::placeholder {
+  color: #fff;
+}
+
+.drop {
+    background: rgba(146, 122, 122, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 10px;
+    border-left: 1px solid rgba(255, 255, 255, .3);
+    border-top: 1px solid rgba(255, 255, 255, .3);
+    box-shadow: 10px 10px 60px -8px rgba(0,0,0,0.2);
+    position: absolute;
+    transition: all 0.2s ease;
+  }
+  .drop-1 {
+  height: 80px; width: 80px;
+  top: -20px; left: -40px;
+  z-index: -1;
+}
+
+.drop-2 {
+  height: 80px; width: 80px;
+  bottom: -30px; right: -10px;
+}
+
+.drop-3 {
+  height: 100px; width: 100px;
+  bottom: 120px; right: -50px;
+  z-index: -1;
+}
+
+.drop-4 {
+  height: 120px; width: 120px;
+  top: -60px; right: -60px;
+}
+
+.drop-5 {
+  height: 60px; width: 60px;
+  bottom: 170px; left: 90px;
+  z-index: -1;
+}
+
