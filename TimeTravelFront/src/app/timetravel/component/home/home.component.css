@@ -1,0 +1,27 @@
+
+.imagePrincipale{
+  padding-top:150px;
+  background: url('../../../../assets/images/home/home.jpg')  no-repeat fixed 50% 50%;
+  height: 400px;
+  max-height: 600px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+
+}
+
+.cardVoyage{
+  display: flex;
+  justify-content: space-around;
+}
+
+.cardQuote{
+  display: flex;
+  justify-content: space-around;
+}
+
+.agenceInfo {
+  margin-left: 200px;
+  margin-right: 200px;
+  margin-top: 50px;
+}

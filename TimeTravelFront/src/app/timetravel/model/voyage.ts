@@ -22,16 +22,16 @@ export class Voyage {
   public set dateArrivee(value: Date | undefined) {
     this._dateArrivee = value;
   }
-  public get epoque(): any | undefined {
+  public get epoque(): Epoque | undefined {
     return this._epoque;
   }
-  public set epoque(value: any | undefined) {
+  public set epoque(value: Epoque | undefined) {
     this._epoque = value;
   }
-  public get machine(): any | undefined {
+  public get machine(): Machine | undefined {
     return this._machine;
   }
-  public set machine(value: any | undefined) {
+  public set machine(value: Machine | undefined) {
     this._machine = value;
   }
   public get adresse(): Adresse | undefined {

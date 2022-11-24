@@ -12,12 +12,6 @@ export class CatalogueComponent implements OnInit {
   constructor(private voyageSrv: VoyageService) { }
 
   ngOnInit(): void {
-    if (!sessionStorage.getItem('panier')) {
-      sessionStorage.setItem(
-        'panier',
-        JSON.stringify(new Map<number, number>())
-      );
-    }
     this.voyageSrv.findAll().subscribe((data) => {
       this.voyages = data;
     });

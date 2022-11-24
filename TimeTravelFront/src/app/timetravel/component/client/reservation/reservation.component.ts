@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Guide } from 'src/app/timetravel/enum/guide';
 import { Passager } from 'src/app/timetravel/model/passager';
 import { Voyage } from 'src/app/timetravel/model/voyage';
 import { VoyageService } from 'src/app/timetravel/service/voyage.service';
@@ -19,6 +20,8 @@ export class ReservationComponent implements OnInit {
   prixReel!: number;
   prix?: number = 0;
 
+  guide = '';
+
   idVoyage= JSON.parse(sessionStorage.getItem('idVoyage')!);
 
   constructor(
@@ -33,6 +36,10 @@ export class ReservationComponent implements OnInit {
         this.voyage = data;
       });
     });
+
+    if (sessionStorage.getItem('guide')!.toString()!='') {
+      this.guide = sessionStorage.getItem('guide')!.toString();
+    }
 
 
     this.passagersJson = JSON.parse(sessionStorage.getItem('passagers')!);

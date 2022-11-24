@@ -23,6 +23,7 @@
       <label for="dateDepart">Choisissez la date de votre départ :</label>
       <input
         type="date"
+        min="{{ minDate | date: 'yyyy-MM-dd' }}"
         class="form-control"
         name="dateDepart"
         [(ngModel)]="dateDepart"
@@ -37,9 +38,13 @@
       </div>
     </div>
     <div class="form-group">
-      <label for="heureDepart">Choisissez l'heure de votre départ :</label>
+      <label for="heureDepart"
+        >Choisissez l'heure de votre départ (entre 8h et 18h):</label
+      >
       <input
         type="time"
+        min="08:00"
+        max="18:00"
         class="form-control"
         name="heureDepart"
         [(ngModel)]="heureDepart"
@@ -54,7 +59,22 @@
       </div>
     </div>
     <div class="form-group">
-      <button (click)="save()" class="btn btn-outline-primary">Enregistrer</button>
+      <label for="guide">guide:</label>
+      <select class="form-control" name="reservation.guide" [(ngModel)]="guide">
+        <option *ngFor="let g of guides | keyvalue" [ngValue]="g.value">
+          {{ g.value }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <button
+        (click)="save()"
+        class="btn btn-outline-primary"
+        [disabled]="form.invalid"
+      >
+        Enregistrer
+      </button>
     </div>
   </form>
 </div>

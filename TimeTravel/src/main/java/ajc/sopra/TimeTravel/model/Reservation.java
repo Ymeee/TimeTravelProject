@@ -53,6 +53,7 @@ public class Reservation {
 	@ManyToOne
 	private Voyage voyage;
 	
+	@JsonView(JsonViews.Common.class)
 	@Enumerated
 	private Guide guide;
 	@Column(nullable = false)

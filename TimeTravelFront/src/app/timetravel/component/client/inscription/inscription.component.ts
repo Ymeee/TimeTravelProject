@@ -10,6 +10,8 @@ import {
 import { ClientService } from 'src/app/timetravel/service/client.service';
 import { Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
+import { AuthenticationService } from 'src/app/timetravel/service/authentication.service';
+import { Client } from 'src/app/timetravel/model/client';
 
 @Component({
   selector: 'app-inscription',
@@ -18,8 +20,15 @@ import { map, Observable } from 'rxjs';
 })
 export class InscriptionComponent implements OnInit {
   form!: FormGroup;
+  login: string = '';
+  password: string = '';
+  error = false;
 
-  constructor(private clientService: ClientService, private router: Router) {}
+  constructor(
+    private clientService: ClientService,
+    private router: Router,
+    private authSrv: AuthenticationService
+  ) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -115,7 +124,8 @@ export class InscriptionComponent implements OnInit {
       });
     }
     this.clientService.inscription(client).subscribe(() => {
-      this.router.navigateByUrl('/home');
+      this.router.navigateByUrl('/login');
     });
   }
+
 }

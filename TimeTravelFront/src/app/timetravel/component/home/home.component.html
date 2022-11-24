@@ -1,1 +1,67 @@
-<p>home works!</p>
+<div ngClass="imagePrincipale">
+  <h1 class="mb-3 h1">Voyager dans le temps c'est possible</h1>
+  <h3>Allons y, Allonzo</h3>
+</div>
+
+<div class="container">
+  <div class="text-center">
+    <h1 class="m-5 h1" style="color: rgb(3,26,47)">Nos offres du moment :</h1>
+  </div>
+  <div class="cardVoyage">
+  <div *ngFor="let v of voyages" class="card" style="width: 18rem">
+    <img
+      src="{{ 'assets/images/voyage/voyage' + v.id + '.jpg' }}"
+      class="card-img-top"
+      alt="image de l'epoque et de la ville"
+      height="200px"
+    />
+    <div class="card-body">
+      <h5 class="card-title">{{ v.epoque }}</h5>
+      <p class="card-text">
+        Destination : {{ v.adresse?.ville }} en {{ v.adresse?.pays }}
+      </p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Du {{ v.dateArrivee }}</li>
+      <li class="list-group-item">Au {{ v.dateRetour }}</li>
+      <li class="list-group-item">Prix par personne : {{ v.prix }}</li>
+    </ul>
+    <div class="card-body">
+      <a
+        routerLink="/voyage/{{ v.id }}"
+        routerLinkActive="active"
+        class="btn btn-outline-primary"
+        >Réserver ce voyage</a
+      >
+      <!-- <button href="" class="card-link">Card link</button> -->
+    </div>
+  </div>
+  </div>
+</div>
+
+<div class="agenceInfo">
+  <div class="row text-center">
+    <div class="col">
+      <img src="\assets\images\home\tardis.png" alt="">
+    </div>
+    <div class="col align-self-center">
+      <h2>Notre mission</h2>
+      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa cupiditate eaque officiis incidunt dolorem quisquam consequatur nam excepturi perferendis accusantium iusto, repudiandae nisi magnam, consequuntur optio est, reprehenderit voluptate voluptatibus?</p>
+    </div>
+  </div>
+
+  <div class="cardQuote">
+    <div class="card text-center" style="width: 18rem;">
+      <div class="card-body">
+        <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam magni, nemo libero necessitatibus eum esse iure sunt sequi nulla natus magnam tenetur. Laboriosam iusto porro, distinctio iure fuga eius aut.</p>
+        <a href="#" class="btn btn-primary">Le Docteur</a>
+      </div>
+    </div>
+    <div class="card text-center" style="width: 18rem;">
+      <div class="card-body">
+        <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam magni, nemo libero necessitatibus eum esse iure sunt sequi nulla natus magnam tenetur. Laboriosam iusto porro, distinctio iure fuga eius aut.</p>
+        <a href="#" class="btn btn-primary">Marty</a>
+      </div>
+    </div>
+</div>
+

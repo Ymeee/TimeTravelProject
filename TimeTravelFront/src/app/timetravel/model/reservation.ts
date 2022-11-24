@@ -1,9 +1,16 @@
 import { EtatVoyage } from "../enum/etat-voyage";
+import { Guide } from "../enum/guide";
 import { Client } from "./client";
 import { Passager } from "./passager";
 import { Voyage } from "./voyage";
 
 export class Reservation {
+  public get guide(): Guide | undefined {
+    return this._guide;
+  }
+  public set guide(value: Guide | undefined) {
+    this._guide = value;
+  }
   public get heureDepart(): any | undefined {
     return this._heureDepart;
   }
@@ -60,6 +67,7 @@ export class Reservation {
     private _prixReel?: number,
     private _etatVoyage?: EtatVoyage,
     private _dateDepart?: Date,
-    private _heureDepart?: any
+    private _heureDepart?: any,
+    private _guide?: Guide
   ) {}
 }

@@ -15,90 +15,58 @@ import { VoyageService } from 'src/app/timetravel/service/voyage.service';
   styleUrls: ['./validation-reservation.component.css'],
 })
 export class ValidationReservationComponent implements OnInit {
-  reservation: Reservation = new Reservation();
-  passagers: Passager[] = [];
-
-  client: Client = new Client();
-
-  voyage: Voyage = new Voyage();
+  reservationBody: any = {
+    "client":{"id":undefined},
+    "passager":[],
+    "voyage":{"id":undefined},
+    "prixReel":undefined,
+    "etatVoyage":undefined,
+    "dateDepart":undefined,
+    "heureDepart":undefined
+ };
 
   constructor(
     private reservationSrv: ReservationService,
-    private clientSrv: ClientService,
-    private voyageSrv: VoyageService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
-    /* probleme :
-    on n'arrive pas a envoyer la reservation car Voyage, Client et Passager est undefined
-    On ne sait pas comment créer l'objet json dans reservation.service (client, voyage et passager)
 
-    sur postman le format pour une réservation est :
-    {
-   "client":{"id":1},
-   "passager":[{"id":1},{"id":2}],
-   "voyage":{"id":1},
-   "prixReel":5000,
-   "etatVoyage":"Termine",
-   "dateDepart":[2022,12,5],
-   "heureDepart":[12,12,0]
+    console.log(JSON.parse(
+      sessionStorage.getItem('idClient')!
+    ));
+    this.reservationBody.client.id = JSON.parse(
+      sessionStorage.getItem('idClient')!
+    );
+
+
+
+    let passagersList = JSON.parse(sessionStorage.getItem('passagers')!);
+    for (let p of passagersList) {
+      this.reservationBody.passager?.push({ id: p.id });
     }
 
-    c'est : {"id":1} que l'on ne sait pas comment gérer
-    */
-    this.voyageSrv
-      .findById(JSON.parse(sessionStorage.getItem('idVoyage')!))
-      .subscribe((data) => {
-        this.reservation.voyage = {
-          id: data.id,
-          dateArrivee: undefined,
-          dateRetour: undefined,
-          epoque: undefined,
-          prix: undefined,
-          adresse: undefined,
-          machine: undefined,
-        };
-        console.log(this.reservation.voyage);
-      });
+    this.reservationBody.voyage.id = JSON.parse(
+      sessionStorage.getItem('idVoyage')!
+    );
 
-    //this.reservation.voyage = JSON.parse(sessionStorage.getItem('idVoyage')!);
+    let prixVoyage = JSON.parse(sessionStorage.getItem('prixVoyage')!);
+    this.reservationBody.prixReel = passagersList.length * prixVoyage;
 
-    this.clientSrv
-      .findById(JSON.parse(sessionStorage.getItem('idClient')!))
-      .subscribe((data) => {
-        console.log(data);
-        this.reservation.client = {
-          id: data.id,
-          login: undefined,
-          nom: undefined,
-          prenom: undefined,
-          tel: undefined,
-          mail: undefined,
-          anniversaire: undefined,
-          adresse: undefined,
-          passagers: undefined,
-        };
-      });
+    this.reservationBody.etatVoyage = EtatVoyage.Reserve;
 
-    /* this.reservation.client = {'id': this.client.id};
-      this.reservation.passager = this.client.passagers;
-      let prixVoyage = JSON.parse(sessionStorage.getItem('prixVoyage')!);
-      this.reservation.prixReel = this.client.passagers!.length * prixVoyage;
- */
-
-    this.reservation.etatVoyage = EtatVoyage.Reserve;
-
-    this.reservation.dateDepart = JSON.parse(
+    this.reservationBody.dateDepart = JSON.parse(
       sessionStorage.getItem('dateDepart')!
     );
 
-    this.reservation.heureDepart = JSON.parse(
+    this.reservationBody.heureDepart = JSON.parse(
       sessionStorage.getItem('heureDepart')!
     );
 
-    this.reservationSrv.create(this.reservation).subscribe((data) => {
-      console.log(data);
+    console.log(this.reservationBody);
+
+    this.reservationSrv.create(this.reservationBody).subscribe((data) => {
+      this.router.navigateByUrl('/home');
     });
   }
 }

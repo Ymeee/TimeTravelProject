@@ -1,17 +1,25 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ClientGuardService } from '../../guard/client-guard.service';
 import { Client } from '../../model/client';
 import { AuthenticationService } from '../../service/authentication.service';
+import { ClientService } from '../../service/client.service';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css']
+  styleUrls: ['./menu.component.css'],
 })
 export class MenuComponent implements OnInit {
-  constructor(private authSrv: AuthenticationService, private router: Router) { }
+
+  constructor(
+    private authSrv: AuthenticationService,
+    private clientSrv: ClientService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
+
   }
 
   logoff() {
