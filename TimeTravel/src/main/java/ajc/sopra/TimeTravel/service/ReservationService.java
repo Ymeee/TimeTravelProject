@@ -49,7 +49,7 @@ public class ReservationService {
 	}
 
 	public Reservation save(Reservation reservation) {
-		if (reservation.getClient() == null) {
+		/*if (reservation.getClient() == null) {
 			throw new ReservationException("probleme client");
 		}
 		if (reservation.getPassager() == null || reservation.getPassager().size()==0) {
@@ -57,7 +57,7 @@ public class ReservationService {
 		}
 		if (reservation.getEtatVoyage() == null) {
 			throw new ReservationException("probleme voyage");
-		}
+		}*/
 		if (reservation.getDateDepart() == null || reservation.getDateDepart().isBefore(LocalDate.now())) {
 			throw new ReservationException("probleme date depart (present)");
 		}

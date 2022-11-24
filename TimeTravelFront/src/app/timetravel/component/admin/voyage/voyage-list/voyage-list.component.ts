@@ -17,9 +17,10 @@ export class VoyageListComponent implements OnInit {
   }
 
   delete(id: number) {
+    console.log(id)
     this.voyageSrv.deleteById(id).subscribe(() => {
+
       this.voyagesObservable = this.voyageSrv.findAll();
     });
   }
-
 }

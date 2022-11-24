@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { MachineEditComponent } from './timetravel/component/admin/machine/machine-edit/machine-edit.component';
 import { MachineListComponent } from './timetravel/component/admin/machine/machine-list/machine-list.component';
+import { ReservationListComponent } from './timetravel/component/admin/reservation/reservation-list/reservation-list.component';
 import { VoyageEditComponent } from './timetravel/component/admin/voyage/voyage-edit/voyage-edit.component';
 import { VoyageListComponent } from './timetravel/component/admin/voyage/voyage-list/voyage-list.component';
 import { CatalogueComponent } from './timetravel/component/catalogue/catalogue.component';
@@ -10,6 +11,7 @@ import { InscriptionComponent } from './timetravel/component/client/inscription/
 import { ReservationComponent } from './timetravel/component/client/reservation/reservation.component';
 import { ValidationReservationComponent } from './timetravel/component/client/validation-reservation/validation-reservation.component';
 import { HomeComponent } from './timetravel/component/home/home.component';
+import { InfosComponent } from './timetravel/component/infos/infos.component';
 import { LoginComponent } from './timetravel/component/login/login.component';
 import { NotFoundComponent } from './timetravel/component/not-found/not-found.component';
 import { ProblemeAdminComponent } from './timetravel/component/probleme-admin/probleme-admin.component';
@@ -20,6 +22,7 @@ import { ClientGuardService } from './timetravel/guard/client-guard.service';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
+  { path: 'infos', component: InfosComponent },
   { path: 'voyage/co', component: VoyageCoComponent },
   {
     path: 'voyage',
@@ -85,6 +88,12 @@ export const routes: Routes = [
     path: 'reservation/validation',
     component: ValidationReservationComponent,
     canActivate: [ClientGuardService],
+  },
+
+  {
+    path: 'admin/reservation',
+    component: ReservationListComponent,
+    canActivate: [AdminGuardService]
   },
 
   {

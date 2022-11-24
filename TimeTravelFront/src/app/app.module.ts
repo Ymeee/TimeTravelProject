@@ -23,6 +23,8 @@ import { AchatVoyageComponent } from './timetravel/component/client/achat-voyage
 import { AchatPassagerComponent } from './timetravel/component/client/achat-passager/achat-passager.component';
 import { ReservationComponent } from './timetravel/component/client/reservation/reservation.component';
 import { ValidationReservationComponent } from './timetravel/component/client/validation-reservation/validation-reservation.component';
+import { InfosComponent } from './timetravel/component/infos/infos.component';
+import { ReservationListComponent } from './timetravel/component/admin/reservation/reservation-list/reservation-list.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { ValidationReservationComponent } from './timetravel/component/client/va
     AchatPassagerComponent,
     ReservationComponent,
     ValidationReservationComponent,
+    InfosComponent,
+    ReservationListComponent,
   ],
   imports: [
     BrowserModule,

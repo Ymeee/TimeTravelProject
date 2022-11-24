@@ -41,6 +41,7 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem('client', JSON.stringify(client));
           sessionStorage.setItem('role', 'Client');
           sessionStorage.setItem('client', JSON.stringify(data.login));
+          console.log('id : '+data.id)
           sessionStorage.setItem('idClient', JSON.stringify(data.id));
         } else {
           sessionStorage.setItem('role', 'Admin');

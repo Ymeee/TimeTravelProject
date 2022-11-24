@@ -1,6 +1,6 @@
 export enum EtatVoyage {
   Reserve = 'Reserve',
-  EnCours = 'En Cours',
+  EnCours = 'EnCours',
   Termine = 'Termine',
   Annule = 'Annule',
 }
