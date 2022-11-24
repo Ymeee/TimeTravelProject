@@ -1,0 +1,102 @@
+.inscription-titre {
+    
+    background-color: rgb(3, 26, 47);
+    padding: 1em;
+    text-align: center;
+
+}
+.formulaire-ins{
+    letter-spacing: 2px;
+    text-transform: capitalize;
+    color: white;
+    text-shadow: 1px 1px 1px rgb(145, 141, 141), 2px 2px 1px gray;
+    font-family: Georgia, serif;
+
+}
+.info-confi{
+    margin-left: 1%;
+    margin-top: 1%;
+    text-align: start;
+    color: rgb(140, 8, 8);
+    font-size: x-small;
+}
+
+.sous-titre {
+    margin-left: 1%;
+    outline: 8px;
+    color: rgb(3, 26, 47);
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    font-weight: bold;
+}
+
+.contenaire-droit {
+    margin-left: 20%;
+    text-align: center;
+    border-left: 1rem solid;
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+}
+.contenaire-gauche {
+    margin-left: 20%;
+    text-align: center;
+    border-left: 1rem solid;
+    display: flex;
+    max-width: 50%;
+    flex-direction: column;
+}
+.contenaire-adresse{
+    margin-left: 20%;
+    text-align: center;
+    border-left: 1rem solid;
+    display: flex;
+    max-width: 50%;
+    flex-direction: column;
+   
+}
+.formulaire {
+   
+    background-color: rgb(203, 203, 207);
+    color: rgb(0, 3, 57);
+    outline: 8px;
+    border-radius: 2rem;
+    font-weight: bold;
+}
+.form-control {
+   
+    background-color: rgb(231, 231, 233);
+}
+.boutton{
+    
+    margin-right: 9%;
+    text-align: center;
+}
+
+
+.form-text {
+    text-align: start;
+    font-size: x-small;
+}
+input {
+    background: transparent;
+    border: none;
+    border-left: 1px solid rgba(255, 255, 255, .3);
+    border-top: 1px solid rgba(255, 255, 255, .3);
+    padding: 1rem;
+    width: 600px;
+    border-radius: 50px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    -moz-backdrop-filter: blur(5px);
+    box-shadow: 4px 4px 60px rgba(0, 0, 0, .2);
+    color: white;
+    font-weight: 500;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
+    transition: all .3s;
+    margin-bottom: 2em;
+  }
+  input:hover{
+background: rgba(255,255,255,0.1);
+box-shadow: 4px 4px 60px 8px rgba(0,0,0,0.2);
+}
